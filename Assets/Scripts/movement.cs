@@ -19,7 +19,7 @@ public class movement : MonoBehaviour
     public GameObject swordHitBox;
     public Rigidbody2D rb;
 
-    public Animator anim;
+    private Animator anim;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -31,8 +31,8 @@ public class movement : MonoBehaviour
         ProcessInputs();
         Animate();
 
-        float shootHor = Input.GetAxis("ShootHorizontal");
-        float shootVer = Input.GetAxis("ShootVertical");
+        float shootHor = Input.GetAxisRaw("ShootHorizontal");
+        float shootVer = Input.GetAxisRaw("ShootVertical");
 
         if ((shootHor != 0 || shootVer != 0) && Time.time > lastFire + fireDelay)
         {
@@ -43,13 +43,19 @@ public class movement : MonoBehaviour
             lastFire = Time.time;
         }
 
-        Vector3 tempVect = new Vector3(input.x, input.y, 0);
-        transform.Translate(tempVect * speed * Time.deltaTime);
+        // Vector3 tempVect = new Vector3(input.x, input.y, 0);
+        // transform.Translate(tempVect * speed * Time.deltaTime);
         if (hearts == 0)
         {
             Debug.Log("muerto");
         }
 
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 movement = input * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + movement);
     }
 
     void ProcessInputs()
@@ -87,7 +93,7 @@ public class movement : MonoBehaviour
 
         // Rigidbody2D bulletRb = bullet.AddComponent<Rigidbody2D>();
         // bulletRb.gravityScale = 0;
-    
+
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
@@ -97,7 +103,7 @@ public class movement : MonoBehaviour
 
     IEnumerator DisableSwordHitbox()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         swordHitBox.SetActive(false);
         anim.SetBool("Attack", false);
     }

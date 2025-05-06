@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - playerDamage
+  - ProjectileDestroyer
+  - Spawner
+  - SpawnerAfterWave
   layers:
   - Default
   - TransparentFX

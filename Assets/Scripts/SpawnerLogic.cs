@@ -13,7 +13,6 @@ public class SpawnerLogic : MonoBehaviour
     
     private int enemiesSpawned = 0;
     private int currentWave = 1;
-    private bool spawning = false;
 
     void Start()
     {
@@ -22,7 +21,6 @@ public class SpawnerLogic : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        spawning = true;
         enemiesSpawned = 0;
 
         for (int i = 0; i < enemiesPerWave; i++)
@@ -31,8 +29,6 @@ public class SpawnerLogic : MonoBehaviour
             enemiesSpawned++;
             yield return new WaitForSeconds(spawnDelay);
         }
-
-        spawning = false;
 
         // Espera antes de la siguiente oleada
         yield return new WaitForSeconds(waveDelay);

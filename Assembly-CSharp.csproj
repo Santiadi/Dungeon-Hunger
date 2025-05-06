@@ -74,12 +74,14 @@
     <Compile Include="Assets\Scripts\UpgradeCard.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\nextWave.cs" />
+    <Compile Include="Assets\Scripts\Cannon_Shot.cs" />
+    <Compile Include="Assets\Scripts\machineLogic.cs" />
+    <Compile Include="Assets\Scripts\example.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeData.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\GoldManager.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeItemUI.cs" />
-    <Compile Include="Assets\Scripts\Cannon_Shot.cs" />
-    <Compile Include="Assets\Scripts\machineLogic.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeSpawner.cs" />
     <Compile Include="Assets\Scripts\coinLogic.cs" />
     <Compile Include="Assets\Scripts\Projectile_Destroy.cs" />

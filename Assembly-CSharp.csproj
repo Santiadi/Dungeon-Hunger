@@ -59,16 +59,18 @@
     <UnityVersion>2022.3.57f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\USUARIO\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.57f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.57f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Scripts_menu\AudioManager.cs" />
     <Compile Include="Assets\Scripts\HUD_Coins.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\SpawnerLogic.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\UpgradeDetailsUI.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\UpgradeCard.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -76,6 +78,11 @@
     <Compile Include="Assets\Scripts\Cannon_Shot.cs" />
     <Compile Include="Assets\Scripts\machineLogic.cs" />
     <Compile Include="Assets\Scripts\example.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\UpgradeData.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\GoldManager.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\UpgradeItemUI.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\UpgradeSpawner.cs" />
     <Compile Include="Assets\Scripts\coinLogic.cs" />
     <Compile Include="Assets\Scripts\Projectile_Destroy.cs" />
     <Compile Include="Assets\Scripts\SaveSystem.cs" />

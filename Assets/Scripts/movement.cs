@@ -15,7 +15,7 @@ public class movement : MonoBehaviour
     private Vector2 input;
 
     public float currentHearts = 3f; // Vida actual del jugador
-    public int maxHearts = 3;        // Vida máxima posible (de 3 a 5)
+    public int maxHearts = 3;        // Vida mï¿½xima posible (de 3 a 5)
 
     public GameObject swordHitBox;
     public Rigidbody2D rb;
@@ -29,7 +29,7 @@ public class movement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        // Asegura que la vida no exceda la máxima
+        // Asegura que la vida no exceda la mï¿½xima
         currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
 
         // Inicializa el HUD con la vida inicial
@@ -51,7 +51,7 @@ public class movement : MonoBehaviour
         {
             anim.SetFloat("AttackX", shootHor);
             anim.SetFloat("AttackY", shootVer);
-            anim.SetBool("Attack", true);
+            anim.SetTrigger("AttackTrigger");
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
         }
@@ -97,15 +97,11 @@ public class movement : MonoBehaviour
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
-
-        StartCoroutine(DisableSwordHitbox());
     }
 
-    IEnumerator DisableSwordHitbox()
+    public  void DisableSwordHitbox()
     {
-        yield return new WaitForSeconds(0.1f);
         swordHitBox.SetActive(false);
-        anim.SetBool("Attack", false);
     }
 
     public void CharacterDamage(float damage)

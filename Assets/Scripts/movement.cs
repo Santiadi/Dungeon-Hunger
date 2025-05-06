@@ -14,20 +14,33 @@ public class movement : MonoBehaviour
 
     private Vector2 input;
 
-    public int hearts = 5;
+    public float currentHearts = 3f; // Vida actual del jugador
+    public int maxHearts = 3;        // Vida máxima posible (de 3 a 5)
 
     public GameObject swordHitBox;
     public Rigidbody2D rb;
 
     private Animator anim;
+
+    // Referencia al HUD
+    public HUD_Hearts hudHearts;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        // Asegura que la vida no exceda la máxima
+        currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
+
+        // Inicializa el HUD con la vida inicial
+        if (hudHearts != null)
+        {
+            hudHearts.UpdateHearts(currentHearts, maxHearts);
+        }
     }
 
     void Update()
     {
-
         ProcessInputs();
         Animate();
 
@@ -43,9 +56,7 @@ public class movement : MonoBehaviour
             lastFire = Time.time;
         }
 
-        // Vector3 tempVect = new Vector3(input.x, input.y, 0);
-        // transform.Translate(tempVect * speed * Time.deltaTime);
-        if (hearts == 0)
+        if (currentHearts <= 0)
         {
             Debug.Log("muerto");
         }
@@ -64,9 +75,6 @@ public class movement : MonoBehaviour
         input.y = Input.GetAxis("Vertical");
 
         input.Normalize();
-
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-
     }
 
     void Animate()
@@ -74,7 +82,6 @@ public class movement : MonoBehaviour
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("MoveMagnitud", input.magnitude);
-
     }
 
     void Shoot(float x, float y)
@@ -86,18 +93,11 @@ public class movement : MonoBehaviour
         }
 
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
-
-        // GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
-
-        // Rigidbody2D bulletRb = bullet.AddComponent<Rigidbody2D>();
-        // bulletRb.gravityScale = 0;
-
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
-        // bulletRb.velocity = shootDirection * bulletSpeed;
+
         StartCoroutine(DisableSwordHitbox());
     }
 
@@ -108,8 +108,30 @@ public class movement : MonoBehaviour
         anim.SetBool("Attack", false);
     }
 
-    public void CharacterDamage(int damage)
+    public void CharacterDamage(float damage)
     {
-        hearts -= damage;
+        currentHearts -= damage;
+        currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
+
+        if (hudHearts != null)
+        {
+            hudHearts.UpdateHearts(currentHearts, maxHearts);
+        }
+
+        if (currentHearts <= 0)
+        {
+            Debug.Log("muerto");
+        }
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHearts = Mathf.Clamp(maxHearts + amount, 1, 5);
+        currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
+
+        if (hudHearts != null)
+        {
+            hudHearts.UpdateHearts(currentHearts, maxHearts);
+        }
     }
 }

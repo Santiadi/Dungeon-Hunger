@@ -78,7 +78,6 @@
     <Compile Include="Assets\Scripts\Projectile_Destroy.cs" />
     <Compile Include="Assets\Scripts\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\HUD_Hearts.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\UpgradesTrigger.cs" />
   </ItemGroup>
   <ItemGroup>

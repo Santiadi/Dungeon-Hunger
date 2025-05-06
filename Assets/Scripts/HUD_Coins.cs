@@ -1,9 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDCoins : MonoBehaviour
 {
-    public TextMeshProUGUI coinsText;
+    public Text coinsText;
 
     void Start()
     {

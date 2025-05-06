@@ -2,4 +2,30 @@
 /Library
 /Temp
 /Logs
+# Archivos generados por Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
 Logs/
+
+# Archivos de sistema
+.DS_Store
+*.swp
+
+# Configuración personal
+*.user
+*.suo
+*.userprefs
+
+# Archivos de VSCode o Rider
+.vscode/
+.idea/
+
+# Sistema operativo
+Thumbs.db
+Desktop.ini
+
+# Archivos de log
+*.log

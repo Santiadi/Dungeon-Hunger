@@ -32,3 +32,5 @@ Desktop.ini
 /UserSettings/Layouts
 /UserSettings
 *.dwlt
+Assembly-CSharp.csproj
+*.csproj

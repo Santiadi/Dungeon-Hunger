@@ -20,42 +20,37 @@ public class UpgradeDetailsUI : MonoBehaviour
         panel.SetActive(false); 
     }
 
-public void ShowDetails(UpgradeData data)
-{
-    currentUpgrade = data;
-    nameText.text = data.upgradeName;
-    descriptionText.text = data.description;
-
-    int level = data.currentLevel;
-
-    // Mostrar información incluso cuando la habilidad esté al máximo
-    if (level >= data.maxLevel)
+    public void ShowDetails(UpgradeData data)
     {
-        // Deshabilitar el botón de compra si la habilidad está al máximo
-        buyButton.interactable = false;
+        currentUpgrade = data;
+        nameText.text = data.upgradeName;
+        descriptionText.text = data.description;
 
-        // Mostrar mensaje de "Max" o similar en lugar del coste
-        costText.text = "Max";  // O puedes poner algo como "Ya al máximo"
-    }
-    else
-    {
-        // Si no está al máximo, mostrar el coste real
-        int cost = data.costPerLevel[level];
-        costText.text = cost.ToString();
+        int level = data.currentLevel;
 
-        // Si no hay suficiente oro, deshabilitar el botón de compra
-        if (GoldManager.Instance.currentGold < cost)
+        if (level >= data.maxLevel)
         {
             buyButton.interactable = false;
+            costText.text = "Max";  
         }
         else
         {
-            buyButton.interactable = true;
+            int cost = data.costPerLevel[level];
+            costText.text = cost.ToString();
+
+            if (GameManager.Instance != null && GameManager.Instance.coins < cost)
+            {
+                buyButton.interactable = false;
+            }
+            else
+            {
+                buyButton.interactable = true;
+            }
         }
+
+        panel.SetActive(true);  
     }
 
-    panel.SetActive(true);  // Mostrar el panel con la información
-}
 
 
     public void Hide()
@@ -63,31 +58,40 @@ public void ShowDetails(UpgradeData data)
         panel.SetActive(false);  
     }
 
-    public void OnBuyClicked()
+public void OnBuyClicked()
+{
+    Debug.Log("Botón de comprar fue clickeado");
+
+    int level = currentUpgrade.currentLevel;
+
+    if (level >= currentUpgrade.maxLevel)
     {
-        Debug.Log("Botón de comprar fue clickeado");
-
-        int level = currentUpgrade.currentLevel;
-
-        if (level >= currentUpgrade.maxLevel)
-            return; 
-
-        int cost = currentUpgrade.costPerLevel[level];
-
-        if (GoldManager.Instance.TrySpendGold(cost))  
-        {
-            Debug.Log("Compra realizada");
-            PlayerStats.Instance.ApplyUpgradeEffects(currentUpgrade);
-            currentUpgrade.currentLevel++; 
-            SaveUpgradeProgress(currentUpgrade);  
-            ShowDetails(currentUpgrade); 
-            UpgradeSpawner.RefreshAllTicks();  
-        }
-        else
-        {
-            Debug.Log("No hay suficiente oro");  
-        }
+        Debug.Log("Ya está en el nivel máximo");
+        return; 
     }
+
+    int cost = currentUpgrade.costPerLevel[level];
+
+    if (GameManager.Instance.coins >= cost)  
+    {
+        GameManager.Instance.coins -= cost;  // Resta el oro
+        SaveUpgradeProgress(currentUpgrade); 
+        currentUpgrade.currentLevel++; 
+        UpgradeSpawner.RefreshAllTicks(); 
+        GameManager.Instance.SaveGame();  // Guarda el juego
+
+        // Llamada para actualizar el oro
+        GoldManager.Instance.UpdateGoldMenu();
+        GameManager.Instance.UpdateGoldDisplay();
+        ShowDetails(currentUpgrade);
+        Debug.Log("Compra realizada");
+    }
+    else
+    {
+        Debug.Log("No hay suficiente oro");
+    }
+}
+
 
 
 

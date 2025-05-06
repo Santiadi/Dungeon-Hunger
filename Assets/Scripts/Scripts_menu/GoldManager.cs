@@ -5,62 +5,47 @@ public class GoldManager : MonoBehaviour
 {
     public static GoldManager Instance;
 
-    public int currentGold; 
     public TextMeshProUGUI goldText;
 
     void Awake()
     {
-        if (Instance == null) 
+        if (Instance == null)
             Instance = this;
-        else 
+        else
             Destroy(gameObject);
 
-        LoadGold();
-        UpdateGoldDisplay();
+        UpdateGoldMenu(); // Asegura que la UI se actualice al inicio
     }
 
-    void LoadGold()
-    {
-        currentGold = PlayerPrefs.GetInt("PlayerGold", 0);
-    }
-
-    void SaveGold()
-    {
-        PlayerPrefs.SetInt("PlayerGold", currentGold);
-        PlayerPrefs.Save();
-    }
-
+    // Método para gastar oro
     public bool TrySpendGold(int amount)
     {
-        if (currentGold >= amount)
+        if (GameManager.Instance.coins >= amount)
         {
-            currentGold -= amount;  
-            SaveGold();  
-            UpdateGoldDisplay();  
+            GameManager.Instance.coins -= amount;  // Resta el oro en GameManager
+            UpdateGoldMenu();  // Actualiza la UI
             return true;
         }
 
         Debug.Log("No hay suficiente oro");
-        return false; 
+        return false;
     }
 
-    // Método para agregar oro
-    public void AddGold(int amount)
+public void UpdateGoldMenu()
+{
+    if (GameManager.Instance != null && goldText != null)  // Asegúrate de que GameManager.Instance no sea null
     {
-        Debug.Log("Añadiendo oro: " + amount);
-        currentGold += amount;  
-        SaveGold();  
-        UpdateGoldDisplay();
+        goldText.text = GameManager.Instance.coins.ToString();
     }
-
-    void UpdateGoldDisplay()
+    else
     {
-        if (goldText != null)
-            goldText.text = currentGold.ToString(); 
+        Debug.LogError("GameManager no está inicializado correctamente.");
     }
+}
 
+    // Obtiene el oro actual
     public int GetCurrentGold()
     {
-        return currentGold;  
+        return GameManager.Instance.coins;
     }
 }

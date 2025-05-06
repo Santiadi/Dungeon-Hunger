@@ -29,13 +29,20 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadGame();
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
+
+        if (Instance != this)
+        {
+            Debug.LogError("El GameManager no se inicializó correctamente");
+            return;
+        }
+
+        LoadGame(); 
     }
 
     void Start()
@@ -62,10 +69,21 @@ public class GameManager : MonoBehaviour
         SaveSystem.SavePlayer(data);
     }
 
+    public void UpdateGoldDisplay()
+    {
+        HUDCoins hud = FindObjectOfType<HUDCoins>();
+        if (hud != null)
+        {
+            hud.UpdateCoins(coins);
+        }
+    }
+
+
     public void LoadGame()
     {
         PlayerData data = SaveSystem.LoadPlayer();
         coins = data.coins;
+        UpdateGoldDisplay();
     }
 
     // OLEADAS

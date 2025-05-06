@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public Transform Player;
     public GameObject dropPrefab; // Arrástralo desde el Inspector
 
+    public float velocity;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +26,24 @@ public class EnemyController : MonoBehaviour
 
             Vector2 direction = (Player.position - transform.position).normalized;
 
-            transform.Translate(direction * 2 * Time.deltaTime);
+            transform.Translate(direction * velocity * Time.deltaTime);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "playerDamage")
+
+        if (collision.tag == "Player")
         {
-            Destroy(gameObject);
+            if (movement.Instance != null)
+            {
+                movement.Instance.CharacterDamage(0.5f);
+                Destroy(this.gameObject);
+            }
+
         }
+        Destroy(this.gameObject);
+
     }
 
     void OnDestroy()

@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Transform Player;
+    public GameObject dropPrefab; // Arrástralo desde el Inspector
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +30,22 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "playerDamage") 
+        if (collision.tag == "playerDamage")
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (dropPrefab != null && Random.value <= 0.15f)
+        {
+            Instantiate(dropPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnEnemyKilled();
         }
     }
 }

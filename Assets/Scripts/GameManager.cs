@@ -1,13 +1,26 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    // Monedas
+    [Header("Monedas")]
     public int coins = 0;
+
+    [Header("Objetos post-oleada")]
+    public GameObject continueButtonPrefab;
+    public GameObject blessingObjectPrefab;
+    public Transform postWaveSpawnPoint; // Donde aparecerán los botones/objetos
+    public GameObject portal;
+    private bool nextWave = false;
+
+    [Header("Bendiciones")]
+    public int blessingLevel = 0; // Nivel de mejora de bendiciones (0 a 2)
+
+
 
     [Header("Oleadas")]
     public int totalEnemiesInWave;
@@ -15,21 +28,27 @@ public class GameManager : MonoBehaviour
     public int enemiesKilled = 0;
     public int currentLevel = 1;
     public int currentWave = 1;
-
-    public Slider waveSlider; // Asigna este en el Inspector
+    public Slider waveSlider;
 
     public GameObject[] enemyPrefabs;
     public GameObject bossPrefab;
-    public Transform[] spawnPoints;
-
+    public GameObject[] spawnPoints;
     private bool bossSpawned = false;
+
+    [Header("DontDestroyElements")]
+
+    public GameObject HUD;
+    public GameObject Player;
 
     private void Awake()
     {
         if (Instance == null)
         {
+            FindSpawners();
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(HUD);
+            DontDestroyOnLoad(Player);
             LoadGame();
         }
         else
@@ -43,7 +62,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
-    // MONEDAS
     public void AddCoins(int amount)
     {
         coins += amount;
@@ -68,6 +86,36 @@ public class GameManager : MonoBehaviour
         coins = data.coins;
     }
 
+
+    void OnEnable()
+    {
+        // Suscribirse al evento de carga de escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Desuscribirse para evitar fugas de memoria
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindSpawners(); // Llamado al cargar una nueva escena
+    }
+
+    void FindSpawners()
+    {
+        spawnPoints = GameObject.FindGameObjectsWithTag("Spawner");
+
+        postWaveSpawnPoint = GameObject.FindGameObjectWithTag("SpawnerAfterWave").transform;
+
+        Debug.Log("Spawners encontrados: " + spawnPoints.Length);
+
+        // Puedes guardar las referencias o inicializar lógica aquí
+    }
+
     // OLEADAS
     IEnumerator SpawnWave()
     {
@@ -85,7 +133,6 @@ public class GameManager : MonoBehaviour
         }
 
         yield return new WaitUntil(() => enemiesKilled >= totalEnemiesInWave);
-        AdvanceWave();
     }
 
     void StartWave(int totalEnemies)
@@ -108,15 +155,18 @@ public class GameManager : MonoBehaviour
     void SpawnEnemy()
     {
         int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoints[index].position, Quaternion.identity);
+
+        int enemyIndex = Mathf.Clamp(currentLevel - 1, 0, enemyPrefabs.Length - 1);
+
+        Instantiate(enemyPrefabs[enemyIndex], spawnPoints[index].transform.position, Quaternion.identity);
     }
 
     void SpawnBoss()
     {
         int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(bossPrefab, spawnPoints[index].position, Quaternion.identity);
+        Instantiate(bossPrefab, spawnPoints[index].transform.position, Quaternion.identity);
         bossSpawned = true;
-        StartWave(1); // Para actualizar slider con 1 jefe
+        StartWave(1);
     }
 
     public void OnEnemyKilled()
@@ -131,13 +181,23 @@ public class GameManager : MonoBehaviour
         if (enemiesKilled >= totalEnemiesInWave)
         {
             Debug.Log("Oleada completada");
-            // Avanza automáticamente desde la corrutina
+            Debug.Log(currentWave);
+            if (currentWave == 10)
+            {
+                Instantiate(portal, postWaveSpawnPoint.position, Quaternion.identity);
+            }
+            else
+            {
+
+                ShowPostWaveOptions();
+            }
         }
     }
 
-    void AdvanceWave()
+    public void AdvanceWave()
     {
-        if (currentWave < 10)
+        Debug.Log("OLEADA: " + currentWave);
+        if (currentWave <= 9)
         {
             currentWave++;
             StartCoroutine(SpawnWave());
@@ -154,4 +214,28 @@ public class GameManager : MonoBehaviour
             StartCoroutine(SpawnWave());
         }
     }
+    void ShowPostWaveOptions()
+    {
+
+        if (continueButtonPrefab != null && postWaveSpawnPoint != null)
+        {
+            Instantiate(continueButtonPrefab, postWaveSpawnPoint.position, Quaternion.identity);
+        }
+        TryShowBlessing();
+    }
+    void TryShowBlessing()
+    {
+        float[] chances = { 0.5f, 0.75f, 1.0f };
+        float chance = chances[Mathf.Clamp(blessingLevel, 0, 2)];
+
+        if (Random.value <= chance)
+        {
+            if (blessingObjectPrefab != null && postWaveSpawnPoint != null)
+            {
+                Vector3 offset = new Vector3(2f, 0, 0); // Separar visualmente
+                Instantiate(blessingObjectPrefab, postWaveSpawnPoint.position + offset, Quaternion.identity);
+            }
+        }
+    }
+    public bool SetWaveState(bool state) => this.nextWave = state;
 }

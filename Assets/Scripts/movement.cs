@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    public static movement Instance;
+
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float speed = 100;
@@ -24,6 +26,14 @@ public class movement : MonoBehaviour
 
     // Referencia al HUD
     public HUD_Hearts hudHearts;
+
+
+    void Awake()
+    {
+        if(Instance == null){
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -99,7 +109,7 @@ public class movement : MonoBehaviour
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
     }
 
-    public  void DisableSwordHitbox()
+    public void DisableSwordHitbox()
     {
         swordHitBox.SetActive(false);
     }
@@ -116,7 +126,7 @@ public class movement : MonoBehaviour
 
         if (currentHearts <= 0)
         {
-            Debug.Log("muerto");
+            Destroy(this.gameObject);
         }
     }
 

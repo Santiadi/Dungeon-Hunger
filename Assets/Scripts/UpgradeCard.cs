@@ -25,7 +25,7 @@ public class UpgradeCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         Time.timeScale = 1f;
 
-        // Destruir el menú
+        // Destruir el menï¿½
         Transform current = transform;
         while (current != null && current.name != "UpgradesMenuCanvas(Clone)")
         {
@@ -38,7 +38,8 @@ public class UpgradeCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
 
         // Destruir el trigger por nombre
-        GameObject trigger = GameObject.Find("UpgradesTrigger");
+        GameObject trigger = GameObject.FindWithTag("UpgradeTrigger");
+        Debug.Log(trigger);
         if (trigger != null)
         {
             Destroy(trigger);

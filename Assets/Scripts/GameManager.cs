@@ -185,6 +185,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("OLEADA COMPLETADA: " + currentWave);
             if (currentWave == 10)
             {
+                currentWave++;
+
                 Instantiate(portal, postWaveSpawnPoint.position, Quaternion.identity);
             }
             else
@@ -207,7 +209,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnBoss();
         }
-        else
+        else if (currentWave == 11)
         {
             currentLevel++;
             currentWave = 1;

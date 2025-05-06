@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     {
         coins += amount;
         SaveGame();
+
+        HUDCoins hud = FindObjectOfType<HUDCoins>();
+        if (hud != null)
+        {
+            hud.UpdateCoins(coins);
+        }
     }
 
     public void SaveGame()

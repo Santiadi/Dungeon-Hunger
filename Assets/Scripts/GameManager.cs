@@ -180,14 +180,14 @@ public class GameManager : MonoBehaviour
 
         if (enemiesKilled >= totalEnemiesInWave)
         {
-            Debug.Log("Oleada completada");
-            Debug.Log(currentWave);
+            Debug.Log("OLEADA COMPLETADA: " + currentWave);
             if (currentWave == 10)
             {
                 Instantiate(portal, postWaveSpawnPoint.position, Quaternion.identity);
             }
             else
             {
+                currentWave++;
 
                 ShowPostWaveOptions();
             }
@@ -196,10 +196,9 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceWave()
     {
-        Debug.Log("OLEADA: " + currentWave);
+        Debug.Log("OLEADA ACTUAL: " + currentWave);
         if (currentWave <= 9)
         {
-            currentWave++;
             StartCoroutine(SpawnWave());
         }
         else if (!bossSpawned)

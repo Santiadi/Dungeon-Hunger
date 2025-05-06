@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
 
     void FindSpawners()
     {
+        if(GameObject.FindGameObjectsWithTag("Spawner") == null)return;
+        
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawner");
 
         postWaveSpawnPoint = GameObject.FindGameObjectWithTag("SpawnerAfterWave").transform;

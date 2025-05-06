@@ -29,3 +29,5 @@ Desktop.ini
 
 # Archivos de log
 *.log
+/UserSettings/Layouts
+/UserSettings

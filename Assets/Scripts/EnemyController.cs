@@ -57,6 +57,11 @@ public class EnemyController : MonoBehaviour
 
     void OnDestroy()
     {
+        // CAMBIAR A CHANCE COMO EL BLESS
+        // 0.20f = 20% de probabilidad de soltar el objeto
+        // 0.25f = 25% de probabilidad de soltar el objeto
+        // 0.30f = 30% de probabilidad de soltar el objeto
+
         if (dropPrefab != null && Random.value <= 0.15f)
         {
             Instantiate(dropPrefab, transform.position, Quaternion.identity);

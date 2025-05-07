@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Scripts_menu\BlessData.cs" />
     <Compile Include="Assets\Scripts\UpgradeCard.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

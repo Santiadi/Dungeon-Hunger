@@ -20,8 +20,19 @@ public class UpgradeSpawner : MonoBehaviour
 
     void Start()
     {
+        saveAllUpgrades();
         LoadUpgradesProgress();
         SpawnUpgrades();
+    }
+
+    void saveAllUpgrades()
+    {
+        foreach (var upgradeData in upgrades)
+        {
+            BlessData data = SaveSystem.LoadUpgrade(upgradeData);
+            data.AddBlessing(upgradeData.upgradeName, upgradeData.currentLevel, upgradeData.currentLevel == 0 ? 0 : upgradeData.bonusPerLevel[upgradeData.currentLevel-1]);
+            SaveSystem.SaveUpgrades(data);
+        }
     }
 
     void SpawnUpgrades()

@@ -53,7 +53,6 @@ public class EnemyController : MonoBehaviour
 
         }
         Destroy(this.gameObject);
-
     }
 
     void OnDestroy()

@@ -30,7 +30,8 @@ public class movement : MonoBehaviour
 
     void Awake()
     {
-        if(Instance == null){
+        if (Instance == null)
+        {
             Instance = this;
         }
     }
@@ -64,11 +65,6 @@ public class movement : MonoBehaviour
             anim.SetTrigger("AttackTrigger");
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
-        }
-
-        if (currentHearts <= 0)
-        {
-            Debug.Log("muerto");
         }
 
     }
@@ -126,8 +122,19 @@ public class movement : MonoBehaviour
 
         if (currentHearts <= 0)
         {
-            Destroy(this.gameObject);
+
+            anim.SetTrigger("Die");
         }
+        else
+        {
+
+            anim.SetTrigger("Hurt");
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     public void IncreaseMaxHealth(int amount)

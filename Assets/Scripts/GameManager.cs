@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+
+    [Header("UI")]
+    public Text waveText;
+
     [Header("Monedas")]
     public int coins = 0;
 
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
     public Slider waveSlider;
 
     public GameObject[] enemyPrefabs;
-    public GameObject bossPrefab;
+    public GameObject[] bossPrefabs;
     public GameObject[] spawnPoints;
     private bool bossSpawned = false;
 
@@ -102,13 +106,17 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if(waveText){
+            waveText.text = "1";
+        }
+
         FindSpawners(); // Llamado al cargar una nueva escena
     }
 
     void FindSpawners()
     {
-        if(GameObject.FindGameObjectsWithTag("Spawner") == null)return;
-        
+        if (GameObject.FindGameObjectsWithTag("Spawner") == null) return;
+
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawner");
 
         postWaveSpawnPoint = GameObject.FindGameObjectWithTag("SpawnerAfterWave").transform;
@@ -166,7 +174,10 @@ public class GameManager : MonoBehaviour
     void SpawnBoss()
     {
         int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(bossPrefab, spawnPoints[index].transform.position, Quaternion.identity);
+
+        int bossIndex = Mathf.Clamp(currentLevel - 1, 0, bossPrefabs.Length - 1);
+
+        Instantiate(bossPrefabs[bossIndex], spawnPoints[index].transform.position, Quaternion.identity);
         bossSpawned = true;
         StartWave(1);
     }
@@ -192,7 +203,6 @@ public class GameManager : MonoBehaviour
             else
             {
                 currentWave++;
-
                 ShowPostWaveOptions();
             }
         }
@@ -216,6 +226,9 @@ public class GameManager : MonoBehaviour
             bossSpawned = false;
             StartCoroutine(SpawnWave());
         }
+        waveText.text = currentWave.ToString();
+
+        
     }
     void ShowPostWaveOptions()
     {

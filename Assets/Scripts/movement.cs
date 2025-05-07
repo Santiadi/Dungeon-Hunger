@@ -24,6 +24,9 @@ public class movement : MonoBehaviour
 
     private Animator anim;
 
+    public InventoryManager inventoryManager;  // Referencia al InventoryManager
+
+
     // Referencia al HUD
     public HUD_Hearts hudHearts;
 
@@ -149,6 +152,17 @@ public class movement : MonoBehaviour
     public void IncreaseMaxHealth(int amount)
     {
         maxHearts = Mathf.Clamp(maxHearts + amount, 1, 5);
+        currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
+
+        if (hudHearts != null)
+        {
+            hudHearts.UpdateHearts(currentHearts, maxHearts);
+        }
+    }
+
+    public void Heal(float amount)
+    {
+        currentHearts += amount;
         currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
 
         if (hudHearts != null)

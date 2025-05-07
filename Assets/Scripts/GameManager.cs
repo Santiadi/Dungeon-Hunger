@@ -57,16 +57,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
-
-        if (Instance != this)
-        {
-            Debug.LogError("El GameManager no se inicializó correctamente");
-            return;
-        }
-
-        LoadGame(); 
     }
 
     void Start()

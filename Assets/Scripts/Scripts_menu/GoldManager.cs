@@ -31,21 +31,15 @@ public class GoldManager : MonoBehaviour
         return false;
     }
 
-public void UpdateGoldMenu()
-{
-    if (GameManager.Instance != null && goldText != null)  // Asegúrate de que GameManager.Instance no sea null
+    public void UpdateGoldMenu()
     {
-        goldText.text = GameManager.Instance.coins.ToString();
+        goldText.text = GetCurrentGold().ToString();
     }
-    else
-    {
-        Debug.LogError("GameManager no está inicializado correctamente.");
-    }
-}
 
     // Obtiene el oro actual
     public int GetCurrentGold()
     {
-        return GameManager.Instance.coins;
+        PlayerData data = SaveSystem.LoadPlayer();
+        return data.coins;
     }
 }

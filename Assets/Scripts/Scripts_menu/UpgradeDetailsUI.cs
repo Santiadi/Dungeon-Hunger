@@ -17,7 +17,7 @@ public class UpgradeDetailsUI : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        panel.SetActive(false); 
+        panel.SetActive(false);
     }
 
     public void ShowDetails(UpgradeData data)
@@ -31,7 +31,7 @@ public class UpgradeDetailsUI : MonoBehaviour
         if (level >= data.maxLevel)
         {
             buyButton.interactable = false;
-            costText.text = "Max";  
+            costText.text = "Max";
         }
         else
         {
@@ -48,61 +48,67 @@ public class UpgradeDetailsUI : MonoBehaviour
             }
         }
 
-        panel.SetActive(true);  
+        panel.SetActive(true);
     }
 
 
 
     public void Hide()
     {
-        panel.SetActive(false);  
+        panel.SetActive(false);
     }
 
-public void OnBuyClicked()
-{
-    Debug.Log("Botón de comprar fue clickeado");
-
-    int level = currentUpgrade.currentLevel;
-
-    if (level >= currentUpgrade.maxLevel)
+    public void OnBuyClicked()
     {
-        Debug.Log("Ya está en el nivel máximo");
-        return; 
+        int coins = GoldManager.Instance.GetCurrentGold();
+        Debug.Log("Botón de comprar fue clickeado");
+
+        int level = currentUpgrade.currentLevel;
+
+        if (level >= currentUpgrade.maxLevel)
+        {
+            Debug.Log("Ya está en el nivel máximo");
+            return;
+        }
+
+        int cost = currentUpgrade.costPerLevel[level];
+
+        if (coins >= cost)
+        {
+            coins -= cost;  // Resta el oro
+            SaveUpgradeProgress(currentUpgrade);
+            currentUpgrade.currentLevel++;
+            UpgradeSpawner.RefreshAllTicks();
+            SaveGame(coins);  // Guarda el juego
+
+            // Llamada para actualizar el oro
+            GoldManager.Instance.UpdateGoldMenu();
+            ShowDetails(currentUpgrade);
+            Debug.Log("Compra realizada");
+        }
+        else
+        {
+            Debug.Log("No hay suficiente oro");
+        }
     }
 
-    int cost = currentUpgrade.costPerLevel[level];
 
-    if (GameManager.Instance.coins >= cost)  
+    public void SaveGame(int coins)
     {
-        GameManager.Instance.coins -= cost;  // Resta el oro
-        SaveUpgradeProgress(currentUpgrade); 
-        currentUpgrade.currentLevel++; 
-        UpgradeSpawner.RefreshAllTicks(); 
-        GameManager.Instance.SaveGame();  // Guarda el juego
-
-        // Llamada para actualizar el oro
-        GoldManager.Instance.UpdateGoldMenu();
-        GameManager.Instance.UpdateGoldDisplay();
-        ShowDetails(currentUpgrade);
-        Debug.Log("Compra realizada");
+        PlayerData data = new PlayerData(coins);
+        SaveSystem.SavePlayer(data);
     }
-    else
-    {
-        Debug.Log("No hay suficiente oro");
-    }
-}
 
 
 
 
-
-        public void SaveUpgradeProgress(UpgradeData upgradeData)
+    public void SaveUpgradeProgress(UpgradeData upgradeData)
     {
         PlayerPrefs.SetInt("UpgradeLevel_" + upgradeData.upgradeName, upgradeData.currentLevel);
         PlayerPrefs.Save();
     }
 
-        public void LoadUpgradeProgress(UpgradeData upgradeData)
+    public void LoadUpgradeProgress(UpgradeData upgradeData)
     {
         int savedLevel = PlayerPrefs.GetInt("UpgradeLevel_" + upgradeData.upgradeName, 0);
         upgradeData.currentLevel = savedLevel;

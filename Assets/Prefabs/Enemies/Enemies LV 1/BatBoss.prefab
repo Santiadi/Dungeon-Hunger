@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7888829622459321924, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.8031
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9212781827863135965, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: m_Name
-      value: BatBoss Variant
+      value: BatBoss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

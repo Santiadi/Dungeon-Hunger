@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HumanSoulDie_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 13
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5605bfca59a1d4ab870c0156a43e3a
+      internalID: -51929723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_1
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 13
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ba9e490a4facf458436beafae16156
+      internalID: 1821745618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 13
+        width: 10
+        height: 12
+      alignment: 9
+      pivot: {x: 0.49124297, y: 0.45621094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9cfaf4d5fa96343aab5e68af060486
+      internalID: -215681188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_3
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 12
+        width: 10
+        height: 14
+      alignment: 9
+      pivot: {x: 0.49124297, y: 0.45621094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5af8f59e348b9a4dbb47fd1baf9f6db
+      internalID: -574236982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 12
+        width: 11
+        height: 15
+      alignment: 9
+      pivot: {x: 0.49203908, y: 0.43577614}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 016c47eb2c7c7f8449531ccb4af5fa97
+      internalID: -1711012926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_5
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 12
+        width: 11
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5079623, y: 0.41242194}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236cbaa01ccef8445b6c4a97b829513f
+      internalID: 50674233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_6
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 12
+        width: 12
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5145976, y: 0.39696705}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00898c813f13ee849a4c0f896ca7600e
+      internalID: -1535106400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_7
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 12
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5000028, y: 0.35403654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c32359f2c60f79d44ad38a4a9dd09d8d
+      internalID: -1248227667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_8
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 12
+        width: 10
+        height: 19
+      alignment: 9
+      pivot: {x: 0.5, y: 0.34789076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f0316690c6e66541a45599d90cce441
+      internalID: 1906267788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_10
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 13
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69745b7b76e78cc4db9a9cb544ac343f
+      internalID: 1704067068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HumanSoulDie_11
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 13
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f252f4e22a72cda4b9ebe2e2f5801e84
+      internalID: 1598247169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +337,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HumanSoulDie_0: -51929723
+      HumanSoulDie_1: 1821745618
+      HumanSoulDie_10: 1704067068
+      HumanSoulDie_11: 1598247169
+      HumanSoulDie_12: 1747338616
+      HumanSoulDie_13: -1056383954
+      HumanSoulDie_2: -215681188
+      HumanSoulDie_3: -574236982
+      HumanSoulDie_4: -1711012926
+      HumanSoulDie_5: 50674233
+      HumanSoulDie_6: -1535106400
+      HumanSoulDie_7: -1248227667
+      HumanSoulDie_8: 1906267788
+      HumanSoulDie_9: -1311085164
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

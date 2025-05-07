@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public GameObject dropPrefab; // Arrástralo desde el Inspector
 
     public float velocity;
+    public float damage;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,15 @@ public class EnemyController : MonoBehaviour
 
             Vector2 direction = (Player.position - transform.position).normalized;
 
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+
             transform.Translate(direction * velocity * Time.deltaTime);
         }
     }
@@ -37,13 +47,12 @@ public class EnemyController : MonoBehaviour
         {
             if (movement.Instance != null)
             {
-                movement.Instance.CharacterDamage(0.5f);
+                movement.Instance.CharacterDamage(damage);
                 Destroy(this.gameObject);
             }
 
         }
         Destroy(this.gameObject);
-
     }
 
     void OnDestroy()
@@ -58,4 +67,10 @@ public class EnemyController : MonoBehaviour
             GameManager.Instance.OnEnemyKilled();
         }
     }
+
+    public void SetProperties(float damage, float velocity) {
+        this.velocity = velocity;
+        this.damage = damage;
+    }
+
 }

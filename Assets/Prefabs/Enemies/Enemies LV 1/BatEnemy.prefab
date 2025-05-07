@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1350482549
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 1545474642, guid: 1579e48c327d7ab4195cc6eb935f3c4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,6 +102,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   dropPrefab: {fileID: 592793126759062293, guid: ab8eda7baf8987943b1b62a739aeabf2, type: 3}
   velocity: 2
+  damage: 0.5
 --- !u!61 &5067177492174375443
 BoxCollider2D:
   m_ObjectHideFlags: 0

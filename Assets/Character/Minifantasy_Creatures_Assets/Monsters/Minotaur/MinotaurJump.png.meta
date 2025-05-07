@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MinotaurJump_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 109
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6668cca0adc2454eae829f075ab2c61
+      internalID: 871415943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurJump_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 110
+        width: 10
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33521524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c290d76dba67eea41af17ee25c1b2f68
+      internalID: -1590816313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurJump_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 111
+        width: 13
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5117006, y: 0.25916037}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421337c50b2a0344194b6c875d3e890d
+      internalID: -514747244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurJump_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 110
+        width: 13
+        height: 12
+      alignment: 9
+      pivot: {x: 0.5117006, y: 0.33521524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54bfa53c5615cdb4ca84af2a8a5877e1
+      internalID: -372374800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurJump_4
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 109
+        width: 10
+        height: 12
+      alignment: 9
+      pivot: {x: 0.51521, y: 0.41127014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543262885b25a8d4fa2e1a341db1d401
+      internalID: -2104233122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurJump_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 109
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ab5dcd2cb32de4aacd8f90560cf28f
+      internalID: 1095343530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +232,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MinotaurJump_0: 871415943
+      MinotaurJump_1: -1590816313
+      MinotaurJump_10: 539040165
+      MinotaurJump_11: -136759346
+      MinotaurJump_12: 1730799129
+      MinotaurJump_13: -1730407494
+      MinotaurJump_14: 1214922701
+      MinotaurJump_15: -414548892
+      MinotaurJump_16: 9281338
+      MinotaurJump_17: 1112531688
+      MinotaurJump_18: -2115444384
+      MinotaurJump_19: 1402341333
+      MinotaurJump_2: -514747244
+      MinotaurJump_20: 963511884
+      MinotaurJump_21: 1016176535
+      MinotaurJump_22: 1631192874
+      MinotaurJump_23: 2042252368
+      MinotaurJump_24: 1807957887
+      MinotaurJump_3: -372374800
+      MinotaurJump_4: -2104233122
+      MinotaurJump_5: 1095343530
+      MinotaurJump_6: 1582683995
+      MinotaurJump_7: -1212441996
+      MinotaurJump_8: -1142759767
+      MinotaurJump_9: 1123854773
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

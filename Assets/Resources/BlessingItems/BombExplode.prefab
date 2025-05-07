@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5409506536531282920}
   - component: {fileID: 3802489903447673597}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: BombExplode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionTime: 3
-  explosionRadius: 5
+  explosionRadius: 1.5
+  explosionDamage: 10
   enemyTag: Enemy
 --- !u!58 &3802489903447673597
 CircleCollider2D:

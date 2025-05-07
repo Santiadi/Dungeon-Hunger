@@ -28,18 +28,13 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator ExplosionCountdown()
     {
-        yield return new WaitForSeconds(explosionTime); 
+        yield return new WaitForSeconds(explosionTime);
+        bombAnimator?.SetTrigger("Explode");
+        yield return new WaitForSeconds(0.4f); // Delay final de animación
 
-        if (bombAnimator != null)
-        {
-            bombAnimator.SetTrigger("Explode");
-        }
-
-
-        yield return new WaitForSeconds(0.4f); 
-
-        Explode(); 
+        Explode();
     }
+
 
     private void Explode()
     {

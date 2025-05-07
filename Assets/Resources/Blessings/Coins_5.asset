@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac45eb32ff304be46b270abff689001a, type: 3}
+  m_Name: Coins_5
+  m_EditorClassIdentifier: 
+  blessingName: Coins +5
+  description: Gives 5 Coins
+  rarity: 1
+  icon: {fileID: 21300000, guid: 1945e0905c035964794ce34d88161af9, type: 3}

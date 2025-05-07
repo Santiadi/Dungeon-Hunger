@@ -9,7 +9,12 @@ public class UpgradesTrigger : MonoBehaviour
     {
         if (!triggered && other.CompareTag("Player"))
         {
-            Instantiate(upgradesMenuCanvasPrefab);
+            GameObject canvas = Instantiate(upgradesMenuCanvasPrefab);
+            var manager = FindObjectOfType<BlessingManager>();
+            var blessings = manager.GetRandomBlessings(3);
+
+            canvas.GetComponent<BlessingsMenuUI>().Setup(blessings);
+
             Time.timeScale = 0f;
             triggered = true;
         }

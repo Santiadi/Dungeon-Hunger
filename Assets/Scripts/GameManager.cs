@@ -134,7 +134,6 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Spawners encontrados: " + spawnPoints.Length);
 
-        // Puedes guardar las referencias o inicializar lógica aquí
     }
 
     // OLEADAS
@@ -204,7 +203,6 @@ public class GameManager : MonoBehaviour
 
         if (enemiesKilled >= totalEnemiesInWave)
         {
-            Debug.Log("OLEADA COMPLETADA: " + currentWave);
             if (currentWave == 10)
             {
                 currentWave++;
@@ -221,7 +219,6 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceWave()
     {
-        Debug.Log("OLEADA ACTUAL: " + currentWave);
         if (currentWave <= 9)
         {
             StartCoroutine(SpawnWave());
@@ -265,4 +262,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public bool SetWaveState(bool state) => this.nextWave = state;
+
+
+    
 }

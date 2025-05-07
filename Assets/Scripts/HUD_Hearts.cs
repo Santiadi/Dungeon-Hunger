@@ -11,16 +11,16 @@ public class HUD_Hearts : MonoBehaviour
 
     private List<GameObject> heartObjects = new List<GameObject>();
 
-    public void UpdateHearts(float currentHealth, int maxHearts)
+    public void UpdateHearts(float currentHealth, float maxHearts)
     {
-        // Asegúrate de que haya suficientes objetos de corazón
+        // Asegï¿½rate de que haya suficientes objetos de corazï¿½n
         while (heartObjects.Count < maxHearts)
         {
             GameObject heart = Instantiate(heartPrefab, transform);
             heartObjects.Add(heart);
         }
 
-        // Actualiza cada corazón
+        // Actualiza cada corazï¿½n
         for (int i = 0; i < heartObjects.Count; i++)
         {
             Image heartImage = heartObjects[i].GetComponent<Image>();

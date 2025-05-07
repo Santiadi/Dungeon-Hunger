@@ -17,6 +17,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6a528dcb635534849891fe665981e577, type: 3}
   frame: {fileID: -387736045, guid: 76cd9b566debf0141872ec9fd381eea4, type: 3}
   maxLevel: 3
-  currentLevel: 3
+  currentLevel: 0
   costPerLevel: 0a0000000f00000014000000
-  bonusPerLevel: []
+  bonusPerLevel:
+  - 2
+  - 2.5
+  - 3

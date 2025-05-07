@@ -17,7 +17,7 @@ public class movement : MonoBehaviour
     private Vector2 input;
 
     public float currentHearts = 3f; // Vida actual del jugador
-    public int maxHearts = 3;        // Vida m�xima posible (de 3 a 5)
+    public float maxHearts = 3;        // Vida m�xima posible (de 3 a 5)
 
     public GameObject swordHitBox;
     public Rigidbody2D rb;
@@ -33,6 +33,15 @@ public class movement : MonoBehaviour
 
     void Awake()
     {
+        // Start al Stats
+        if (SaveSystem.LoadPlayer() != null)
+        {
+            currentHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
+            maxHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
+            fireDelay = (float)(SaveSystem.GetUpgradeBonus("Velocidad de ataque") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de ataque"));
+            speed = (float)(SaveSystem.GetUpgradeBonus("Velocidad de movimiento") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de movimiento"));
+            
+        }
         if (Instance == null)
         {
             Instance = this;

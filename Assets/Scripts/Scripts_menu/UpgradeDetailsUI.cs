@@ -64,6 +64,7 @@ public class UpgradeDetailsUI : MonoBehaviour
         Debug.Log("Botón de comprar fue clickeado");
 
         int level = currentUpgrade.currentLevel;
+        Debug.Log("LEVEL: " + level);
 
         if (level >= currentUpgrade.maxLevel)
         {
@@ -76,8 +77,9 @@ public class UpgradeDetailsUI : MonoBehaviour
         if (coins >= cost)
         {
             coins -= cost;  // Resta el oro
-            SaveUpgradeProgress(currentUpgrade);
+            Debug.Log("SE COMPRO: " + currentUpgrade);
             currentUpgrade.currentLevel++;
+            SaveUpgradeProgress(currentUpgrade);
             UpgradeSpawner.RefreshAllTicks();
             SaveGame(coins);  // Guarda el juego
 
@@ -104,14 +106,14 @@ public class UpgradeDetailsUI : MonoBehaviour
 
     public void SaveUpgradeProgress(UpgradeData upgradeData)
     {
-        PlayerPrefs.SetInt("UpgradeLevel_" + upgradeData.upgradeName, upgradeData.currentLevel);
-        PlayerPrefs.Save();
+        BlessData data = SaveSystem.LoadUpgrade(upgradeData);
+        data.AddBlessing(upgradeData.upgradeName, upgradeData.currentLevel, upgradeData.bonusPerLevel[upgradeData.currentLevel - 1]);
+        SaveSystem.SaveUpgrades(data);
     }
 
     public void LoadUpgradeProgress(UpgradeData upgradeData)
     {
-        int savedLevel = PlayerPrefs.GetInt("UpgradeLevel_" + upgradeData.upgradeName, 0);
-        upgradeData.currentLevel = savedLevel;
+        upgradeData.currentLevel = SaveSystem.GetUpgradeLevel(upgradeData.upgradeName);
     }
 
 }

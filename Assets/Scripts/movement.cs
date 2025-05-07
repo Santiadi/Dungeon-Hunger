@@ -36,10 +36,10 @@ public class movement : MonoBehaviour
         // Start al Stats
         if (SaveSystem.LoadPlayer() != null)
         {
-            currentHearts = SaveSystem.GetUpgradeBonus("Salud maxima");
-            maxHearts = SaveSystem.GetUpgradeBonus("Salud maxima");
-            fireDelay = SaveSystem.GetUpgradeBonus("Velocidad de ataque");
-            speed = SaveSystem.GetUpgradeBonus("Velocidad de movimiento");
+            currentHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
+            maxHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
+            fireDelay = (float)(SaveSystem.GetUpgradeBonus("Velocidad de ataque") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de ataque"));
+            speed = (float)(SaveSystem.GetUpgradeBonus("Velocidad de movimiento") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de movimiento"));
             
         }
         if (Instance == null)

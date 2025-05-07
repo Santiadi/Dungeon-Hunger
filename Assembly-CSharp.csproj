@@ -80,7 +80,7 @@
     <Compile Include="Assets\Item.cs" />
 
     <Compile Include="Assets\Scripts\Scripts_menu\PlayerStats.cs" />
-
+    <Compile Include="Assets\Scripts\Scripts_menu\BlessData.cs" />
     <Compile Include="Assets\Scripts\UpgradeCard.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

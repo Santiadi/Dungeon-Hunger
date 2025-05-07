@@ -19,4 +19,8 @@ MonoBehaviour:
   maxLevel: 4
   currentLevel: 0
   costPerLevel: 0a0000000f0000001400000019000000
-  bonusPerLevel: []
+  bonusPerLevel:
+  - 1
+  - 0.6
+  - 0.4
+  - 0.1

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
+    public static movement Instance;
+
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float speed = 100;
@@ -15,7 +17,7 @@ public class movement : MonoBehaviour
     private Vector2 input;
 
     public float currentHearts = 3f; // Vida actual del jugador
-    public int maxHearts = 3;        // Vida máxima posible (de 3 a 5)
+    public int maxHearts = 3;        // Vida mï¿½xima posible (de 3 a 5)
 
     public GameObject swordHitBox;
     public Rigidbody2D rb;
@@ -28,11 +30,20 @@ public class movement : MonoBehaviour
     // Referencia al HUD
     public HUD_Hearts hudHearts;
 
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
 
-        // Asegura que la vida no exceda la máxima
+        // Asegura que la vida no exceda la mï¿½xima
         currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
 
         // Inicializa el HUD con la vida inicial
@@ -54,14 +65,9 @@ public class movement : MonoBehaviour
         {
             anim.SetFloat("AttackX", shootHor);
             anim.SetFloat("AttackY", shootVer);
-            anim.SetBool("Attack", true);
+            anim.SetTrigger("AttackTrigger");
             Shoot(shootHor, shootVer);
             lastFire = Time.time;
-        }
-
-        if (currentHearts <= 0)
-        {
-            Debug.Log("muerto");
         }
 
     }
@@ -100,15 +106,11 @@ public class movement : MonoBehaviour
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
-
-        StartCoroutine(DisableSwordHitbox());
     }
 
-    IEnumerator DisableSwordHitbox()
+    public void DisableSwordHitbox()
     {
-        yield return new WaitForSeconds(0.1f);
         swordHitBox.SetActive(false);
-        anim.SetBool("Attack", false);
     }
 
     public void CharacterDamage(float damage)
@@ -123,8 +125,19 @@ public class movement : MonoBehaviour
 
         if (currentHearts <= 0)
         {
-            Debug.Log("muerto");
+
+            anim.SetTrigger("Die");
         }
+        else
+        {
+
+            anim.SetTrigger("Hurt");
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     public void IncreaseMaxHealth(int amount)

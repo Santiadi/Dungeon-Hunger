@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4745e39e1691a1e43bda9275dbd5e7e5, type: 3}
+  m_Name: Upgrade_AreaExplosion
+  m_EditorClassIdentifier: 
+  upgradeName: Aumento de area de explosion de la bomba
+  description: Incrementa el area afectada por las explosiones de bombas
+  icon: {fileID: 21300000, guid: 6a352a5b27832e440b65dcc2d23792da, type: 3}
+  frame: {fileID: -387736045, guid: 76cd9b566debf0141872ec9fd381eea4, type: 3}
+  maxLevel: 2
+  currentLevel: 0
+  costPerLevel: 0a00000014000000
+  bonusPerLevel:
+  - 0
+  - 0

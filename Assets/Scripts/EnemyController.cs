@@ -6,6 +6,11 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Transform Player;
+    public GameObject dropPrefab; // Arrástralo desde el Inspector
+
+    public float velocity;
+    public float damage;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +27,50 @@ public class EnemyController : MonoBehaviour
 
             Vector2 direction = (Player.position - transform.position).normalized;
 
-            transform.Translate(direction * 2 * Time.deltaTime);
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+
+            transform.Translate(direction * velocity * Time.deltaTime);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "playerDamage") 
+
+        if (collision.tag == "Player")
         {
-            Destroy(gameObject);
+            if (movement.Instance != null)
+            {
+                movement.Instance.CharacterDamage(damage);
+                Destroy(this.gameObject);
+            }
+
+        }
+        Destroy(this.gameObject);
+    }
+
+    void OnDestroy()
+    {
+        if (dropPrefab != null && Random.value <= 0.15f)
+        {
+            Instantiate(dropPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnEnemyKilled();
         }
     }
+
+    public void SetProperties(float damage, float velocity) {
+        this.velocity = velocity;
+        this.damage = damage;
+    }
+
 }

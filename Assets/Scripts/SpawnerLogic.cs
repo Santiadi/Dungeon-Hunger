@@ -6,20 +6,35 @@ public class SpawnerLogic : MonoBehaviour
 {
     public GameObject batPrefab;
 
-    public float fireDelay = 0.5f; 
-    private float lastFireTime;
-    void Update()
+    [Header("Oleadas")]
+    public int enemiesPerWave = 5;
+    public float spawnDelay = 1f;
+    public float waveDelay = 5f;
+    
+    private int enemiesSpawned = 0;
+    private int currentWave = 1;
+
+    void Start()
     {
-        if (Time.time > lastFireTime + fireDelay)
-        {
-            FireBullet();
-            lastFireTime = Time.time;
-        }
+        StartCoroutine(SpawnWave());
     }
 
-    void FireBullet()
+    IEnumerator SpawnWave()
     {
-        Instantiate(batPrefab, transform.position, transform.rotation);
+        enemiesSpawned = 0;
 
+        for (int i = 0; i < enemiesPerWave; i++)
+        {
+            Instantiate(batPrefab, transform.position, Quaternion.identity);
+            enemiesSpawned++;
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        // Espera antes de la siguiente oleada
+        yield return new WaitForSeconds(waveDelay);
+
+        currentWave++;
+        enemiesPerWave += 2; // Incrementar dificultad
+        StartCoroutine(SpawnWave());
     }
 }

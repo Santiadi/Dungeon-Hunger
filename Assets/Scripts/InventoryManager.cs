@@ -1,36 +1,84 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class InventoryItemData
+{
+    public string itemName;
+    public Sprite itemSprite;
+    public float healAmount; // 0 si no cura (ej: bomba)
+}
+
+[System.Serializable]
+public class InventorySlot
+{
+    public string itemName = "";
+    public int quantity = 0;
+}
 
 public class InventoryManager : MonoBehaviour
 {
+    [Header("Slots visuales")]
     public GameObject slot1;
     public GameObject slot2;
 
-    public Sprite potionSprite;  
-    public Sprite bombSprite;   
+    [Header("Datos de ítems")]
+    public List<InventoryItemData> itemDataList;
+
+    private Dictionary<string, InventoryItemData> itemDataDict;
+
+    private InventorySlot[] inventory = new InventorySlot[2]
+    {
+        new InventorySlot(),
+        new InventorySlot()
+    };
 
     private bool inventory2Unlocked = false;
-    private string[] inventory = new string[2];
+    private bool slot2BlessingUsed = false;
 
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        itemDataDict = new Dictionary<string, InventoryItemData>();
+        foreach (var item in itemDataList)
         {
-            UseItem(0); 
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (inventory2Unlocked) 
+            if (!itemDataDict.ContainsKey(item.itemName))
             {
-                UseItem(1); 
+                itemDataDict[item.itemName] = item;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.M)) // Tecla M para desbloquear el inventario 2
-        {
-            UnlockInventory2();
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)) UseItem(0);
+        if (Input.GetKeyDown(KeyCode.E) && inventory2Unlocked) UseItem(1);
+        if (Input.GetKeyDown(KeyCode.M)) UnlockInventory2(); // debug/test key
+    }
+
+    // Acceso externo desde bendiciones
+    public bool CanUnlockSlot2()
+    {
+        return !slot2BlessingUsed;
+    }
+
+    public void UnlockSlot2ByBlessing()
+    {
+        if (!slot2BlessingUsed)
+        {
+            inventory2Unlocked = true;
+            slot2.SetActive(true);
+            slot2BlessingUsed = true;
+
+            Debug.Log("🔓 Slot 2 desbloqueado por bendición.");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Ya usaste la bendición de Slot Extra.");
+        }
+    }
+
+    // Usado si quieres desbloquear manualmente con una tecla
     public void UnlockInventory2()
     {
         if (!inventory2Unlocked)
@@ -40,126 +88,115 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AssignItemToSlot(int slot, string item)
+    public void AssignItem(string item)
     {
-        if (slot >= 0 && slot < inventory.Length)
+        // Agregar a stack existente
+        for (int i = 0; i < inventory.Length; i++)
         {
+            if (i == 1 && !inventory2Unlocked) continue;
 
-            if (!string.IsNullOrEmpty(inventory[0]) && inventory2Unlocked)
+            if (inventory[i].itemName == item)
             {
-
-                inventory[1] = item;
-                Debug.Log("Asignando al slot 2: " + item);
-                UpdateSlotUI(1); 
-            }
-            else
-            {
-
-                inventory[0] = item;
-                Debug.Log("Asignando al slot 1: " + item);
-                UpdateSlotUI(0); 
+                inventory[i].quantity++;
+                UpdateSlotUI(i);
+                return;
             }
         }
-        else
+
+        // Buscar slot vacío disponible
+        for (int i = 0; i < inventory.Length; i++)
         {
-            Debug.LogError("Slot no v�lido: " + slot); 
+            if (i == 1 && !inventory2Unlocked) continue;
+
+            if (string.IsNullOrEmpty(inventory[i].itemName))
+            {
+                inventory[i].itemName = item;
+                inventory[i].quantity = 1;
+                UpdateSlotUI(i);
+                return;
+            }
         }
+
+        Debug.Log("Inventario lleno o slot bloqueado. No se pudo agregar: " + item);
+    }
+
+    public void UseItem(int slot)
+    {
+        var data = inventory[slot];
+
+        if (string.IsNullOrEmpty(data.itemName) || !itemDataDict.ContainsKey(data.itemName))
+        {
+            Debug.Log("Slot vacío o ítem inválido.");
+            return;
+        }
+
+        var itemInfo = itemDataDict[data.itemName];
+
+        if (itemInfo.healAmount > 0f)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            player?.GetComponent<movement>()?.Heal(itemInfo.healAmount);
+        }
+        else if (data.itemName == "BombExplode")
+        {
+            PlaceBomb();
+        }
+
+        data.quantity--;
+        if (data.quantity <= 0)
+        {
+            data.itemName = "";
+            data.quantity = 0;
+        }
+
+        UpdateSlotUI(slot);
     }
 
     private void UpdateSlotUI(int slot)
     {
         GameObject slotObj = (slot == 0) ? slot1 : slot2;
-        Transform iconTransform = slotObj.transform.Find("Icon");
 
-        if (iconTransform == null)
+        Transform iconTransform = slotObj.transform.Find("Icon");
+        Transform quantityTransform = slotObj.transform.Find("Quantity");
+
+        if (iconTransform == null || quantityTransform == null)
         {
-            Debug.LogError("No se ha encontrado el objeto 'Icon' dentro de " + slotObj.name);
+            Debug.LogError("Faltan 'Icon' o 'Quantity' en " + slotObj.name);
             return;
         }
 
         Image iconImage = iconTransform.GetComponent<Image>();
+        Text quantityText = quantityTransform.GetComponent<Text>();
 
-        if (iconImage == null)
+        var data = inventory[slot];
+
+        if (string.IsNullOrEmpty(data.itemName))
         {
-            Debug.LogError("El componente Image no se encuentra en el objeto 'Icon' dentro de " + slotObj.name);
+            iconImage.enabled = false;
+            quantityText.text = "";
             return;
         }
 
-        if (!string.IsNullOrEmpty(inventory[slot]))
-        {
-            Debug.Log("Actualizando sprite del inventario en el slot " + slot + " con el item: " + inventory[slot]);
-
-            // Asignar el sprite correcto basado en el nombre del item
-            Sprite itemSprite = null;
-
-            if (inventory[slot] == "Small_Potion")
-            {
-                itemSprite = potionSprite;  // Asignar el sprite de la poci�n
-            }
-            else if (inventory[slot] == "Bomb")
-            {
-                itemSprite = bombSprite;  // Asignar el sprite de la bomba
-            }
-
-            if (itemSprite != null)
-            {
-                iconImage.sprite = itemSprite;
-                iconImage.enabled = true;
-            }
-            else
-            {
-                Debug.LogError("Sprite no encontrado para el item: " + inventory[slot]);
-            }
-        }
-        else
-        {
-            iconImage.enabled = false;  // Ocultar la imagen si el slot est� vac�o
-        }
-    }
-
-    public void UseItem(int slot)
-    {
-        if (!string.IsNullOrEmpty(inventory[slot]))
-        {
-            Debug.Log("Usando item de inventario " + (slot + 1) + ": " + inventory[slot]);
-
-            if (inventory[slot] == "Small_Potion")
-            {
-                // Aplicar curaci�n
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                movement playerScript = player.GetComponent<movement>();
-                playerScript.Heal(0.5f); 
-
-                inventory[slot] = "";
-                UpdateSlotUI(slot); 
-            }
-
-            if (inventory[slot] == "Bomb")
-            {
-                // Colocar la bomba en el escenario
-                PlaceBomb();
-
-
-                inventory[slot] = "";
-                UpdateSlotUI(slot);
-            }
-        }
-        else
-        {
-            Debug.Log("No hay item en el inventario " + (slot + 1));
-        }
+        iconImage.sprite = itemDataDict[data.itemName].itemSprite;
+        iconImage.enabled = true;
+        quantityText.text = data.quantity > 1 ? data.quantity.ToString() : "";
     }
 
     private void PlaceBomb()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player"); 
-        Vector3 placePosition = player.transform.position;
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
 
-        GameObject bombWithLogic = Instantiate(Resources.Load("Bomb") as GameObject, placePosition, Quaternion.identity);
+        Vector3 pos = player.transform.position;
+        GameObject prefab = Resources.Load<GameObject>("BombExplode");
 
-        bombWithLogic.layer = 2;  
-
-        Debug.Log("Bomba colocada en: " + placePosition);
+        if (prefab != null)
+        {
+            Instantiate(prefab, pos, Quaternion.identity).layer = 2;
+        }
+        else
+        {
+            Debug.LogError("Prefab 'Bomb' no encontrado.");
+        }
     }
-
 }

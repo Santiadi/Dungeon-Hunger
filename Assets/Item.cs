@@ -16,9 +16,11 @@ public class Item : MonoBehaviour
 
             if (inventory != null)
             {
-                Debug.Log("Asignando la bomba al inventario: " + itemName);
- 
-                inventory.AssignItemToSlot(0, itemName);
+                Debug.Log("Asignando al inventario: " + itemName);
+
+                // Dentro de Item.cs
+                inventory.AssignItem(itemName);
+
             }
             else
             {

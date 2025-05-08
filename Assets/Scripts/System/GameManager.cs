@@ -47,7 +47,16 @@ public class GameManager : MonoBehaviour
     public GameObject BlessingManager;
     public GameObject InventoryManager;
 
+
+    [Header("Pausa")]
+    public GameObject pauseBackground;
+    public GameObject pauseText;
+    private bool isPaused = false;
+
+
+
     public GameObject EventSystem;
+
 
     private void Awake()
     {
@@ -78,6 +87,27 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnWave());
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        Time.timeScale = isPaused ? 0f : 1f;
+
+        pauseBackground.SetActive(isPaused);
+        pauseText.SetActive(isPaused);
+    }
+
+
 
     public void AddCoins(int amount)
     {

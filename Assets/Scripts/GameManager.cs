@@ -203,6 +203,7 @@ public class GameManager : MonoBehaviour
 
         if (enemiesKilled >= totalEnemiesInWave)
         {
+            Debug.Log("Oleada " + currentWave + " completada!");
             if (currentWave == 10)
             {
                 currentWave++;

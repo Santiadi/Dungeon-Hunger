@@ -55,7 +55,6 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && inventory2Unlocked) UseItem(1);
     }
 
-    // Acceso externo desde bendiciones
     public bool CanUnlockSlot2()
     {
         return !slot2BlessingUsed;
@@ -79,8 +78,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-
-    // Usado si quieres desbloquear manualmente con una tecla
     public void UnlockInventory2()
     {
         if (!inventory2Unlocked)
@@ -90,9 +87,26 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AssignItem(string item)
+    public bool AssignItem(string item)
     {
-        // Agregar a stack existente
+        if (item == "Sword Slash")
+        {
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                if (i == 1 && !inventory2Unlocked) continue;
+
+                if (string.IsNullOrEmpty(inventory[i].itemName))
+                {
+                    inventory[i].itemName = item;
+                    inventory[i].quantity = 1;
+                    UpdateSlotUI(i);
+                    return true;
+                }
+            }
+            Debug.Log("Inventario lleno o slot bloqueado. No se pudo agregar: " + item);
+            return false;
+        }
+
         for (int i = 0; i < inventory.Length; i++)
         {
             if (i == 1 && !inventory2Unlocked) continue;
@@ -101,11 +115,10 @@ public class InventoryManager : MonoBehaviour
             {
                 inventory[i].quantity++;
                 UpdateSlotUI(i);
-                return;
+                return true;
             }
         }
 
-        // Buscar slot vacío disponible
         for (int i = 0; i < inventory.Length; i++)
         {
             if (i == 1 && !inventory2Unlocked) continue;
@@ -115,11 +128,12 @@ public class InventoryManager : MonoBehaviour
                 inventory[i].itemName = item;
                 inventory[i].quantity = 1;
                 UpdateSlotUI(i);
-                return;
+                return true;
             }
         }
 
         Debug.Log("Inventario lleno o slot bloqueado. No se pudo agregar: " + item);
+        return false;
     }
 
     public void UseItem(int slot)
@@ -147,7 +161,7 @@ public class InventoryManager : MonoBehaviour
         {
             ClearEffect clear = new GameObject("ClearEffectTemp").AddComponent<ClearEffect>();
             clear.Activate();
-            Destroy(clear.gameObject); // Limpiar el objeto temporal
+            Destroy(clear.gameObject);
         }
         else if (data.itemName == "Sword Slash")
         {
@@ -156,13 +170,13 @@ public class InventoryManager : MonoBehaviour
 
             if (slashEffect != null)
             {
-                // Usa lo que está en el Inspector
                 slashEffect.Activate(slashEffect.defaultUses, slashEffect.slashHeight);
             }
 
             data.itemName = "";
             data.quantity = 0;
             UpdateSlotUI(slot);
+            return;
         }
 
         data.quantity--;

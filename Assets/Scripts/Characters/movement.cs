@@ -21,6 +21,10 @@ public class movement : MonoBehaviour
     public float currentHearts = 3f;
     public float maxHearts = 3f;
 
+    [Header("Ghost Hearts")]
+    public float ghostHearts = 0f;
+
+
     [Header("Inventario y HUD")]
     public InventoryManager inventoryManager;
     public HUD_Hearts hudHearts;
@@ -126,15 +130,20 @@ public class movement : MonoBehaviour
 
     public void CharacterDamage(float damage)
     {
-        currentHearts -= damage;
-        currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
-
-        if (hudHearts != null)
+        if (ghostHearts > 0)
         {
-            hudHearts.UpdateHearts(currentHearts, maxHearts);
+            ghostHearts -= damage;
+            ghostHearts = Mathf.Max(ghostHearts, 0);
+        }
+        else
+        {
+            currentHearts -= damage;
+            currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
         }
 
-        if (currentHearts <= 0)
+        hudHearts?.UpdateHearts(currentHearts, maxHearts, ghostHearts);
+
+        if (currentHearts <= 0 && ghostHearts <= 0)
         {
             anim.SetTrigger("Die");
         }
@@ -143,6 +152,7 @@ public class movement : MonoBehaviour
             anim.SetTrigger("Hurt");
         }
     }
+
 
     public void Die()
     {

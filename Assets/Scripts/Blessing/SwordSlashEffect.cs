@@ -3,8 +3,8 @@
 public class SwordSlashEffect : MonoBehaviour
 {
     [Header("Configuración por defecto")]
-    public int defaultUses = 3;
-    public float slashHeight = 1f;
+    public int defaultUses;
+    public float slashHeight;
 
     [Header("Prefab del proyectil slash")]
     public GameObject slashPrefab;
@@ -13,6 +13,19 @@ public class SwordSlashEffect : MonoBehaviour
     public int slashesRemaining;
 
     private movement playerMovement;
+
+
+    void Awake()
+    {
+        if (SaveSystem.LoadPlayer() != null)
+        {
+            defaultUses = (int)(SaveSystem.GetUpgradeBonus("Numero de cortes de espada") == 0 ? 3 : SaveSystem.GetUpgradeBonus("Numero de cortes de espada"));
+            slashHeight = SaveSystem.GetUpgradeBonus("Aumento de corte de espada") == 0 ? 1f : SaveSystem.GetUpgradeBonus("Aumento de corte de espada");
+            Debug.Log("Usos de espada: " + defaultUses + ", Altura: " + slashHeight);
+
+        }
+    }
+
 
     void Start()
     {

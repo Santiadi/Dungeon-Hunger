@@ -9,27 +9,13 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Jugador tocó el item: " + itemName);
-
-
             InventoryManager inventory = other.GetComponent<movement>().inventoryManager;
 
-            if (inventory != null)
+            if (inventory != null && inventory.AssignItem(itemName))
             {
-                Debug.Log("Asignando al inventario: " + itemName);
-
-                // Dentro de Item.cs
-                inventory.AssignItem(itemName);
-
+                Destroy(gameObject); // solo se destruye si se agregó
             }
-            else
-            {
-                Debug.LogError("No se encontró el InventoryManager.");
-            }
-
-            Destroy(gameObject);
-
-            Debug.Log(itemName + " recogido!");
         }
     }
+
 }

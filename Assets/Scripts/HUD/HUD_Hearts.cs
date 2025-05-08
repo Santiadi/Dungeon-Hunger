@@ -8,43 +8,57 @@ public class HUD_Hearts : MonoBehaviour
     public Sprite fullHeartSprite;
     public Sprite halfHeartSprite;
     public Sprite emptyHeartSprite;
+    public Sprite ghostFullHeartSprite;
+    public Sprite ghostHalfHeartSprite;
+
 
     private List<GameObject> heartObjects = new List<GameObject>();
 
-    public void UpdateHearts(float currentHealth, float maxHearts)
+    public void UpdateHearts(float currentHealth, float maxHearts, float ghostHearts = 0f)
     {
-        // Aseg�rate de que haya suficientes objetos de coraz�n
-        while (heartObjects.Count < maxHearts)
+        int totalHearts = Mathf.CeilToInt(maxHearts + ghostHearts);
+        int ghostStartIndex = Mathf.CeilToInt(maxHearts);
+
+        // Asegura suficientes objetos
+        while (heartObjects.Count < totalHearts)
         {
             GameObject heart = Instantiate(heartPrefab, transform);
             heartObjects.Add(heart);
         }
 
-        // Actualiza cada coraz�n
-        for (int i = 0; i < heartObjects.Count; i++)
+        // --- Corazones normales ---
+        for (int i = 0; i < Mathf.CeilToInt(maxHearts); i++)
         {
             Image heartImage = heartObjects[i].GetComponent<Image>();
 
             if (i < Mathf.FloorToInt(currentHealth))
-            {
                 heartImage.sprite = fullHeartSprite;
-                heartObjects[i].SetActive(true);
-            }
             else if (i < currentHealth)
-            {
                 heartImage.sprite = halfHeartSprite;
-                heartObjects[i].SetActive(true);
-            }
-            else if (i < maxHearts)
-            {
-                heartImage.sprite = emptyHeartSprite;
-                heartObjects[i].SetActive(true);
-            }
             else
-            {
-                // Oculta corazones extra
-                heartObjects[i].SetActive(false);
-            }
+                heartImage.sprite = emptyHeartSprite;
+
+            heartObjects[i].SetActive(true);
+        }
+
+        // --- Ghost Hearts ---
+        for (int i = 0; i < Mathf.CeilToInt(ghostHearts); i++)
+        {
+            Image heartImage = heartObjects[ghostStartIndex + i].GetComponent<Image>();
+
+            if (i < Mathf.FloorToInt(ghostHearts))
+                heartImage.sprite = ghostFullHeartSprite;
+            else
+                heartImage.sprite = ghostHalfHeartSprite;
+
+            heartImage.gameObject.SetActive(true);
+        }
+
+        // --- Ocultar los que sobran ---
+        for (int i = totalHearts; i < heartObjects.Count; i++)
+        {
+            heartObjects[i].SetActive(false);
         }
     }
+
 }

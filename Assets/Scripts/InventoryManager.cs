@@ -53,7 +53,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q)) UseItem(0);
         if (Input.GetKeyDown(KeyCode.E) && inventory2Unlocked) UseItem(1);
-        if (Input.GetKeyDown(KeyCode.M)) UnlockInventory2(); // debug/test key
     }
 
     // Acceso externo desde bendiciones
@@ -71,12 +70,15 @@ public class InventoryManager : MonoBehaviour
             slot2BlessingUsed = true;
 
             Debug.Log("🔓 Slot 2 desbloqueado por bendición.");
+
+            UpdateSlotUI(1);
         }
         else
         {
             Debug.LogWarning("⚠️ Ya usaste la bendición de Slot Extra.");
         }
     }
+
 
     // Usado si quieres desbloquear manualmente con una tecla
     public void UnlockInventory2()
@@ -140,6 +142,27 @@ public class InventoryManager : MonoBehaviour
         else if (data.itemName == "BombExplode")
         {
             PlaceBomb();
+        }
+        else if (data.itemName == "Clear")
+        {
+            ClearEffect clear = new GameObject("ClearEffectTemp").AddComponent<ClearEffect>();
+            clear.Activate();
+            Destroy(clear.gameObject); // Limpiar el objeto temporal
+        }
+        else if (data.itemName == "Sword Slash")
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            SwordSlashEffect slashEffect = player.GetComponent<SwordSlashEffect>();
+
+            if (slashEffect != null)
+            {
+                // Usa lo que está en el Inspector
+                slashEffect.Activate(slashEffect.defaultUses, slashEffect.slashHeight);
+            }
+
+            data.itemName = "";
+            data.quantity = 0;
+            UpdateSlotUI(slot);
         }
 
         data.quantity--;

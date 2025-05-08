@@ -20,7 +20,7 @@ public class BlessingManager : MonoBehaviour
             BlessingRarity rarity = roll switch
             {
                 < 0.05f => BlessingRarity.Epic,
-                < 0.90f => BlessingRarity.Rare,
+                < 0.15f => BlessingRarity.Rare,
                 _ => BlessingRarity.Common
             };
 

@@ -63,28 +63,54 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         Debug.Log($"Aplicando bendición: {blessing.blessingName}");
 
+        InventoryManager inventory = GameObject.FindGameObjectWithTag("Player")
+                                              .GetComponent<movement>()
+                                              .inventoryManager;
+
+        movement playerMovement = GameObject.FindGameObjectWithTag("Player")
+                                           .GetComponent<movement>();
+
         switch (blessing.blessingName)
         {
             case "Bomb":
             case "Small Potion":
             case "Medium Potion":
             case "Max Potion":
+            case "Clear":
+            case "Sword Slash": 
                 TrySpawnItem(blessing.blessingName);
                 break;
 
-            case "Extra Slot":
-                InventoryManager inventory = GameObject.FindGameObjectWithTag("Player")
-                                                      .GetComponent<movement>()
-                                                      .inventoryManager;
 
+            case "Extra Slot":
                 if (inventory != null && inventory.CanUnlockSlot2())
                 {
                     inventory.UnlockSlot2ByBlessing();
                 }
-                else
-                {
-                    Debug.LogWarning("La bendición 'Extra Slot' ya fue usada.");
-                }
+                break;
+
+            case "Small Heal":
+                playerMovement?.Heal(0.5f);
+                break;
+
+            case "Medium Heal":
+                playerMovement?.Heal(1f);
+                break;
+
+            case "Full Heal":
+                playerMovement?.Heal(5f);
+                break;
+
+            case "Coins +2":
+                GameManager.Instance?.AddCoins(2);
+                break;
+
+            case "Coins +5":
+                GameManager.Instance?.AddCoins(5);
+                break;
+
+            case "Coins +10":
+                GameManager.Instance?.AddCoins(10);
                 break;
 
             default:
@@ -92,6 +118,8 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 break;
         }
     }
+
+
 
 
 

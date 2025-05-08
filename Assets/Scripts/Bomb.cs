@@ -4,7 +4,7 @@ using System.Collections;
 public class Bomb : MonoBehaviour
 {
     public float explosionTime = 3f;  
-    public float explosionRadius = 5f;  
+    public float explosionRadius = 1f;  
     public float explosionDamage = 10f;  // Daño que causa la bomba
     public string enemyTag = "Enemy";  
     private Animator bombAnimator; 

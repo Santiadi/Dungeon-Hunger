@@ -16,7 +16,6 @@ public class UpgradeData : ScriptableObject
 
     [Header("Progreso")]
     public int maxLevel = 3;
-    [HideInInspector]
     public int currentLevel = 0;
 
     [Header("Coste en oro por nivel")]

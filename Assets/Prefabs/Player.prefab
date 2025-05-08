@@ -356,11 +356,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2eabca32721ba4b94222d23e28766f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4555309814161526553, guid: 8579101a02f789b43a25eda731a58f72, type: 3}
-  bulletSpeed: 5
   speed: 3
-  fireDelay: 0.5
-  hearts: 5
-  swordHitBox: {fileID: 5429374297121347540}
+  revive: 1
   rb: {fileID: 3658579019089125082}
-  animator: {fileID: 2427593424091752057}
+  fireDelay: 0.5
+  swordHitBox: {fileID: 5429374297121347540}
+  currentHearts: 3
+  maxHearts: 3
+  inventoryManager: {fileID: 0}
+  hudHearts: {fileID: 0}

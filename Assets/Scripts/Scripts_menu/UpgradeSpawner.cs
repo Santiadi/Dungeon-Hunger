@@ -29,6 +29,7 @@ public class UpgradeSpawner : MonoBehaviour
     {
         foreach (var upgradeData in upgrades)
         {
+            Debug.Log("Guardando mejora: " + upgradeData.upgradeName + " con nivel: " + upgradeData.currentLevel);
             BlessData data = SaveSystem.LoadUpgrade(upgradeData);
             data.AddBlessing(upgradeData.upgradeName, upgradeData.currentLevel, upgradeData.currentLevel == 0 ? 0 : upgradeData.bonusPerLevel[upgradeData.currentLevel-1]);
             SaveSystem.SaveUpgrades(data);

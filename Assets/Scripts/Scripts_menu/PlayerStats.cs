@@ -5,13 +5,13 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance;
 
     // Estadísticas base del jugador
-    public float health = 100f;  // Salud comienza en 100
-    public float damage = 10f;   // Daño comienza en 10
-    public float speed = 5f;     // Velocidad comienza en 5
-    public int bombs = 1;        // Número de bombas
-    public int swordCuts = 3;    // Número base de cortes de espada
-    public float blessingChance = 0.5f;  // Probabilidad base de bendición
-    public int goldMultiplier = 1; // Multiplicador de oro
+    public float health = 0f;         // Salud comienza en 0
+    public float damage = 0f;         // Daño comienza en 0
+    public float speed = 0f;          // Velocidad comienza en 0
+    public int bombs = 0;             // Número de bombas en 0
+    public int swordCuts = 0;         // Número base de cortes de espada en 0
+    public float blessingChance = 0f; // Probabilidad base de bendición en 0
+    public int goldMultiplier = 0;    // Multiplicador de oro en 0
 
     // Array de mejoras que tiene el jugador
     public UpgradeData[] upgrades;
@@ -24,39 +24,8 @@ public class PlayerStats : MonoBehaviour
         else
             Destroy(gameObject);
 
-        // Cargar las estadísticas del jugador guardadas
-        LoadPlayerStats();
-    }
-
-    // Cargar estadísticas guardadas desde PlayerPrefs
-    void LoadPlayerStats()
-    {
-        health = PlayerPrefs.GetFloat("PlayerHealth", 100f);  // Si no existe, comienza en 100
-        damage = PlayerPrefs.GetFloat("PlayerDamage", 10f);    // Si no existe, comienza en 10
-        speed = PlayerPrefs.GetFloat("PlayerSpeed", 5f);       // Si no existe, comienza en 5
-        bombs = PlayerPrefs.GetInt("PlayerBombs", 1);          // Número base de bombas
-        swordCuts = PlayerPrefs.GetInt("PlayerSwordCuts", 3);  // Número base de cortes de espada
-        blessingChance = PlayerPrefs.GetFloat("PlayerBlessingChance", 0.5f); // Probabilidad base de bendición
-        goldMultiplier = PlayerPrefs.GetInt("PlayerGoldMultiplier", 1); // Multiplicador de oro
-
-        // Cargar el progreso de las mejoras
-        foreach (var upgrade in upgrades)
-        {
-            LoadUpgradeProgress(upgrade); 
-        }
-    }
-
-    // Guardar las estadísticas del jugador en PlayerPrefs
-    void SavePlayerStats()
-    {
-        PlayerPrefs.SetFloat("PlayerHealth", health);
-        PlayerPrefs.SetFloat("PlayerDamage", damage);
-        PlayerPrefs.SetFloat("PlayerSpeed", speed);
-        PlayerPrefs.SetInt("PlayerBombs", bombs);
-        PlayerPrefs.SetInt("PlayerSwordCuts", swordCuts);
-        PlayerPrefs.SetFloat("PlayerBlessingChance", blessingChance);
-        PlayerPrefs.SetInt("PlayerGoldMultiplier", goldMultiplier);
-        PlayerPrefs.Save();  
+        // Ya no se carga desde PlayerPrefs
+        // Las estadísticas deben inicializarse por defecto o desde JSON si lo implementas
     }
 
     // Aplicar los efectos de una mejora al jugador
@@ -120,22 +89,7 @@ public class PlayerStats : MonoBehaviour
                     break;
             }
 
-            // Guardar los cambios después de aplicar la mejora
-            SavePlayerStats();
+            // Ya no se guarda en PlayerPrefs
         }
-    }
-
-    // Guardar el progreso de una mejora en PlayerPrefs
-    public void SaveUpgradeProgress(UpgradeData upgradeData)
-    {
-        PlayerPrefs.SetInt("UpgradeLevel_" + upgradeData.upgradeName, upgradeData.currentLevel);
-        PlayerPrefs.Save();
-    }
-
-    // Cargar el progreso de una mejora desde PlayerPrefs
-    void LoadUpgradeProgress(UpgradeData upgradeData)
-    {
-        int savedLevel = PlayerPrefs.GetInt("UpgradeLevel_" + upgradeData.upgradeName, 0);  // Cargar el nivel guardado (0 si no se encuentra)
-        upgradeData.currentLevel = savedLevel;
     }
 }

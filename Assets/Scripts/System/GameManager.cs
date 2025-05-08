@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
     public GameObject Player;
 
+    public GameObject BlessingManager;
+    public GameObject InventoryManager;
+
     private void Awake()
     {
         if (Instance == null)
@@ -53,6 +56,8 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(HUD);
             DontDestroyOnLoad(Player);
+            DontDestroyOnLoad(BlessingManager);
+            DontDestroyOnLoad(InventoryManager);
             LoadGame();
         }
         else

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlessingManager : MonoBehaviour
 {
@@ -10,6 +11,25 @@ public class BlessingManager : MonoBehaviour
     public Sprite rareCardSprite;
     public Sprite epicCardSprite;
 
+
+            void OnEnable()
+    {
+        // Suscribirse al evento de carga de escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Desuscribirse para evitar fugas de memoria
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Aquí puedes manejar la lógica que necesites al cargar una escena
+        // Por ejemplo, puedes reiniciar el inventario o cargar datos específicos de la escena
+        Debug.Log("Escena cargada: " + scene.name);
+    }
     public List<Blessing> GetRandomBlessings(int count)
     {
         List<Blessing> selected = new List<Blessing>();

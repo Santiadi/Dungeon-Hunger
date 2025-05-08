@@ -141,7 +141,7 @@ public class movement : MonoBehaviour
             currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
         }
 
-        hudHearts?.UpdateHearts(currentHearts, maxHearts, ghostHearts);
+        hudHearts.UpdateHearts(currentHearts, maxHearts, ghostHearts);
 
         if (currentHearts <= 0 && ghostHearts <= 0)
         {

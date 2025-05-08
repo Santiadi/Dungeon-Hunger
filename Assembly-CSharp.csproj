@@ -69,9 +69,9 @@
     <Compile Include="Assets\Scripts\Scripts_menu\AudioManager.cs" />
     <Compile Include="Assets\Scripts\System\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeDetailsUI.cs" />
-    <Compile Include="Assets\HitBoxScript.cs" />
     <Compile Include="Assets\Scripts\HUD\WaveProgressUI.cs" />
     <Compile Include="Assets\Scripts\MapLogic\SpawnerLogic.cs" />
+    <Compile Include="Assets\hitBoxScript.cs" />
     <Compile Include="Assets\Scripts\System\GameManager.cs" />
     <Compile Include="Assets\Scripts\System\coinLogic.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\PlayerStats.cs" />

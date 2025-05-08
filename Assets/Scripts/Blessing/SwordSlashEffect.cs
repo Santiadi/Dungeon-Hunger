@@ -20,7 +20,7 @@ public class SwordSlashEffect : MonoBehaviour
         if (SaveSystem.LoadPlayer() != null)
         {
             defaultUses = (int)(SaveSystem.GetUpgradeBonus("Numero de cortes de espada") == 0 ? 3 : SaveSystem.GetUpgradeBonus("Numero de cortes de espada"));
-            slashHeight = SaveSystem.GetUpgradeBonus("Aumento de corte de espada") == 0 ? 1f : SaveSystem.GetUpgradeBonus("Aumento de corte de espada");
+            slashHeight = SaveSystem.GetUpgradeBonus("Aumento de corte de espada") == 0 ? 0.5f : SaveSystem.GetUpgradeBonus("Aumento de corte de espada");
             Debug.Log("Usos de espada: " + defaultUses + ", Altura: " + slashHeight);
 
         }

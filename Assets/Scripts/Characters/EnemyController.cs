@@ -61,6 +61,14 @@ public class EnemyController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (isBoss && collision.tag == "Player")
+        {
+            if (movement.Instance != null)
+            {
+                movement.Instance.CharacterDamage(damage);
+                ReciveDamage(-1);
+            }
+        }
         if (collision.tag == "Player")
         {
             if (movement.Instance != null)
@@ -76,6 +84,8 @@ public class EnemyController : MonoBehaviour
 
     public void ReciveDamage(float damage)
     {
+        Debug.Log("Recibiendo daño: " + damage);
+        Debug.Log("Vida actual: " + hearts);
         if (anim != null)
         {
             anim.SetTrigger("Hurt"); 
@@ -107,8 +117,8 @@ public class EnemyController : MonoBehaviour
         {
             if (dropPrefab != null && Random.value <= chanceToDrop)
             {
-                Debug.Log("Monedas sueltas: " + goldChanceDrop);
-                for (int i = 0; i <= goldChanceDrop; i++)
+                Debug.Log("Monedas  : " + goldChanceDrop);
+                for (int i = 0; i < goldChanceDrop; i++)
                 {
                     Debug.Log("Monedas sueltas: " + i);
                     Vector2 offset = Random.insideUnitCircle * 0.2f; // Separación leve entre monedas

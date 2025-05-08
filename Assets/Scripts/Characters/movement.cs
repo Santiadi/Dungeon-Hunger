@@ -117,13 +117,6 @@ public class movement : MonoBehaviour
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
-        StartCoroutine(DisableSwordHitboxAfterDelay());
-    }
-
-    private IEnumerator DisableSwordHitboxAfterDelay()
-    {
-        yield return new WaitForSeconds(0.1f);
-        swordHitBox.SetActive(false);
     }
 
     public void DisableSwordHitbox()

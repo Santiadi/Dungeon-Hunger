@@ -16,11 +16,14 @@ public class EnemyController : MonoBehaviour
     private float chanceToDrop = 0.15f; // 15% de probabilidad de soltar el objeto
     private float goldChanceDrop = 1f; // Cuantas monedas suelta el enemigo
 
+    private Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        anim = GetComponent<Animator>();
 
     }
 
@@ -67,17 +70,20 @@ public class EnemyController : MonoBehaviour
             }
 
         }
-        Destroy(this.gameObject);
+
     }
 
 
-    void ReciveDamage(float damage)
+    public void ReciveDamage(float damage)
     {
+        if (anim != null)
+        {
+            anim.SetTrigger("Hurt"); 
+        }
         hearts -= damage;
         if (hearts <= 0)
         {
             Destroy(this.gameObject);
-
         }
     }
 

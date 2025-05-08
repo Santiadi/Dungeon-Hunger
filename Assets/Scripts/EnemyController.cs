@@ -8,8 +8,13 @@ public class EnemyController : MonoBehaviour
     public Transform Player;
     public GameObject dropPrefab; // Arrástralo desde el Inspector
 
+    public bool isBoss = false;
     public float velocity;
     public float damage;
+    public GameObject maxPotionPrefab;
+    public float hearts;
+    private float chanceToDrop = 0.15f; // 15% de probabilidad de soltar el objeto
+    private float goldChanceDrop = 1f; // Cuantas monedas suelta el enemigo
 
 
     // Start is called before the first frame update
@@ -20,6 +25,16 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Awake()
+    {
+        if (SaveSystem.LoadPlayer() != null)
+        {
+            chanceToDrop = SaveSystem.GetUpgradeBonus("Suerte oro") == 0 ? 0.15f : SaveSystem.GetUpgradeBonus("Suerte oro");
+            goldChanceDrop = SaveSystem.GetUpgradeBonus("Mas oro") == 0 ? 1f : SaveSystem.GetUpgradeBonus("Mas oro");
+            Debug.Log("Suerte oro: " + chanceToDrop);
+            Debug.Log("Mas oro: " + goldChanceDrop);
+        }
+    }
     void Update()
     {
         if (Player != null)
@@ -55,25 +70,58 @@ public class EnemyController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
+    void ReciveDamage(float damage)
+    {
+        hearts -= damage;
+        if (hearts <= 0)
+        {
+            Destroy(this.gameObject);
+
+        }
+    }
+
     void OnDestroy()
     {
-        // CAMBIAR A CHANCE COMO EL BLESS
-        // 0.20f = 20% de probabilidad de soltar el objeto
-        // 0.25f = 25% de probabilidad de soltar el objeto
-        // 0.30f = 30% de probabilidad de soltar el objeto
 
-        if (dropPrefab != null && Random.value <= 0.15f)
+        if (isBoss)
         {
-            Instantiate(dropPrefab, transform.position, Quaternion.identity);
-        }
+            Instantiate(maxPotionPrefab, transform.position, Quaternion.identity);
 
+            for (int i = 0; i < 5; i++)
+            {
+                Vector2 offset = Random.insideUnitCircle * 0.2f; // Separación leve entre monedas
+                Vector2 spawnPos = (Vector2)transform.position + offset;
+                Instantiate(dropPrefab, spawnPos, Quaternion.identity);
+            }
+
+
+        }
+        else
+        {
+            if (dropPrefab != null && Random.value <= chanceToDrop)
+            {
+                Debug.Log("Monedas sueltas: " + goldChanceDrop);
+                for (int i = 0; i <= goldChanceDrop; i++)
+                {
+                    Debug.Log("Monedas sueltas: " + i);
+                    Vector2 offset = Random.insideUnitCircle * 0.2f; // Separación leve entre monedas
+                    Vector2 spawnPos = (Vector2)transform.position + offset;
+                    Instantiate(dropPrefab, spawnPos, Quaternion.identity);
+                }
+
+
+            }
+
+        }
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnEnemyKilled();
         }
     }
 
-    public void SetProperties(float damage, float velocity) {
+    public void SetProperties(float damage, float velocity)
+    {
         this.velocity = velocity;
         this.damage = damage;
     }

@@ -27,9 +27,13 @@ public class SlashProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject); // ✅ destruye al enemigo
+            EnemyController enemy = other.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.ReciveDamage(3);
+                Debug.Log("Slash golpeó a: " + other.name);
+            }
             Debug.Log("Slash golpeó y destruyó a: " + other.name);
-            // ❌ NO se destruye el slash
         }
     }
 

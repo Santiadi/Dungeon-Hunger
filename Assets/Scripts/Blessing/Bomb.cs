@@ -67,6 +67,8 @@ public class Bomb : MonoBehaviour
         {
             if (enemy.CompareTag(enemyTag))
             {
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+                enemyController.ReciveDamage(explosionDamage); 
                 Destroy(enemy.gameObject);
                 Debug.Log("Enemigo destruido: " + enemy.name);
             }

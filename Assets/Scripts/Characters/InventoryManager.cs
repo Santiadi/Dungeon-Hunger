@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 
 [System.Serializable]
 public class InventoryItemData
@@ -47,6 +49,25 @@ public class InventoryManager : MonoBehaviour
                 itemDataDict[item.itemName] = item;
             }
         }
+    }
+
+        void OnEnable()
+    {
+        // Suscribirse al evento de carga de escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Desuscribirse para evitar fugas de memoria
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Aquí puedes manejar la lógica que necesites al cargar una escena
+        // Por ejemplo, puedes reiniciar el inventario o cargar datos específicos de la escena
+        Debug.Log("Escena cargada: " + scene.name);
     }
 
     private void Update()

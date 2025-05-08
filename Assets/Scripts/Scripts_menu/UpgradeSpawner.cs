@@ -20,10 +20,11 @@ public class UpgradeSpawner : MonoBehaviour
 
     void Start()
     {
-        saveAllUpgrades();
-        LoadUpgradesProgress();
+        LoadUpgradesProgress();  
+        saveAllUpgrades();       
         SpawnUpgrades();
     }
+
 
     void saveAllUpgrades()
     {
@@ -31,7 +32,7 @@ public class UpgradeSpawner : MonoBehaviour
         {
             Debug.Log("Guardando mejora: " + upgradeData.upgradeName + " con nivel: " + upgradeData.currentLevel);
             BlessData data = SaveSystem.LoadUpgrade(upgradeData);
-            data.AddBlessing(upgradeData.upgradeName, upgradeData.currentLevel, upgradeData.currentLevel == 0 ? 0 : upgradeData.bonusPerLevel[upgradeData.currentLevel-1]);
+            data.AddBlessing(upgradeData.upgradeName, upgradeData.currentLevel, upgradeData.currentLevel == 0 ? 0 : upgradeData.bonusPerLevel[upgradeData.currentLevel - 1]);
             SaveSystem.SaveUpgrades(data);
         }
     }

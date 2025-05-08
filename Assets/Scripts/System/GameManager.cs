@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject blessingObjectPrefab;
     public Transform postWaveSpawnPoint; // Donde aparecerán los botones/objetos
     public GameObject portal;
+    public GameObject portalSpawn;
     private bool nextWave = false;
 
     [Header("Bendiciones")]
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public int currentWave = 1;
     public Slider waveSlider;
 
+    [Header("Enemigos")]
     public GameObject[] enemyPrefabs;
     public GameObject[] bossPrefabs;
     public GameObject[] spawnPoints;
@@ -47,20 +49,23 @@ public class GameManager : MonoBehaviour
     public GameObject BlessingManager;
     public GameObject InventoryManager;
 
+    public GameObject EventSystem;
 
     [Header("Pausa")]
     public GameObject pauseBackground;
     public GameObject pauseText;
     private bool isPaused = false;
 
+    [Header("Muerte")]
+    public GameObject deathBackground;
+    public GameObject deathText;
 
 
-    public GameObject EventSystem;
 
 
     private void Awake()
     {
-        if(SaveSystem.LoadPlayer() != null)
+        if (SaveSystem.LoadPlayer() != null)
         {
             blessingLevel = (int)(SaveSystem.GetUpgradeBonus("Aumento de ratio de bendiciones") == 0 ? 0 : SaveSystem.GetUpgradeBonus("Aumento de ratio de bendiciones"));
 
@@ -85,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         StartCoroutine(SpawnWave());
     }
 
@@ -105,6 +111,12 @@ public class GameManager : MonoBehaviour
 
         pauseBackground.SetActive(isPaused);
         pauseText.SetActive(isPaused);
+    }
+
+    public void ShowDeathScreen()
+    {
+        deathBackground.SetActive(true);
+        deathText.SetActive(true);
     }
 
 
@@ -160,7 +172,13 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(waveText){
+        if (scene.name == "MenuScene")
+        {
+            Destroy(gameObject);
+            return;
+        }
+        if (waveText)
+        {
             waveText.text = "1";
         }
 
@@ -174,8 +192,8 @@ public class GameManager : MonoBehaviour
         spawnPoints = GameObject.FindGameObjectsWithTag("Spawner");
 
         postWaveSpawnPoint = GameObject.FindGameObjectWithTag("SpawnerAfterWave").transform;
-
-        Debug.Log("Spawners encontrados: " + spawnPoints.Length);
+        if(GameObject.FindGameObjectWithTag("PortalSpawner") == null) return;
+        portalSpawn = GameObject.FindGameObjectWithTag("PortalSpawner");
 
     }
 
@@ -250,8 +268,8 @@ public class GameManager : MonoBehaviour
             if (currentWave == 10)
             {
                 currentWave++;
-
-                Instantiate(portal, postWaveSpawnPoint.position, Quaternion.identity);
+                if(GameObject.FindGameObjectWithTag("PortalSpawner") != null){return;}
+                ActivePortal();
             }
             else
             {
@@ -280,7 +298,7 @@ public class GameManager : MonoBehaviour
         }
         waveText.text = currentWave.ToString();
 
-        
+
     }
     void ShowPostWaveOptions()
     {
@@ -307,6 +325,29 @@ public class GameManager : MonoBehaviour
     }
     public bool SetWaveState(bool state) => this.nextWave = state;
 
+    void ActivePortal()
+    {
+        Instantiate(portal, portalSpawn.transform.position, Quaternion.Euler(0,0,-90f));
+    }
 
-    
+    public void ReturnToMenuFromDeath()
+    {
+        StartCoroutine(DelayedReturnToMenu());
+    }
+
+    IEnumerator DelayedReturnToMenu()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(HUD);
+        Destroy(BlessingManager);
+        Destroy(InventoryManager);
+        Destroy(Player); // por si aún sigue activo
+        deathBackground.SetActive(true);
+        deathText.SetActive(true);
+
+        SceneManager.LoadScene("MenuScene");
+    }
+
+
 }

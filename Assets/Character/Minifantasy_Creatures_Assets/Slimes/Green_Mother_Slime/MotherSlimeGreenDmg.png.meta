@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -95,7 +95,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MotherSlimeGreenDmg_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 109
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ad2433f893bbc4e984a5e847d055ad
+      internalID: -1031619524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MotherSlimeGreenDmg_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 109
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7006531bc991a4941b28ee2ab95a00eb
+      internalID: 937363257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MotherSlimeGreenDmg_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 109
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608941e1ab970e340b5cffc945633f26
+      internalID: -438712944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MotherSlimeGreenDmg_0
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 109
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef7e79f71411d04ca711e5501ce4510
+      internalID: -1145937414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +190,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MotherSlimeGreenDmg_0: -1145937414
+      MotherSlimeGreenDmg_1: -1031619524
+      MotherSlimeGreenDmg_10: -1958182599
+      MotherSlimeGreenDmg_11: -255811572
+      MotherSlimeGreenDmg_12: -1680657280
+      MotherSlimeGreenDmg_13: 262169472
+      MotherSlimeGreenDmg_14: 948928476
+      MotherSlimeGreenDmg_15: 1157261365
+      MotherSlimeGreenDmg_16: -464944024
+      MotherSlimeGreenDmg_2: 937363257
+      MotherSlimeGreenDmg_3: 1359974881
+      MotherSlimeGreenDmg_4: -438712944
+      MotherSlimeGreenDmg_5: -953684725
+      MotherSlimeGreenDmg_6: 1335968687
+      MotherSlimeGreenDmg_7: -979472156
+      MotherSlimeGreenDmg_8: 1350758275
+      MotherSlimeGreenDmg_9: -2141716839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

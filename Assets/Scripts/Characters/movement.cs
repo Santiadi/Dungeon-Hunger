@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class movement : MonoBehaviour
     [Header("Movimiento")]
     public float speed = 100;
 
-    public float revive = 1f; 
+    public float revive = 1f;
     private Vector2 input;
     public Rigidbody2D rb;
 
@@ -41,7 +42,7 @@ public class movement : MonoBehaviour
             speed = (float)(SaveSystem.GetUpgradeBonus("Velocidad de movimiento") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de movimiento"));
             revive = SaveSystem.GetUpgradeBonus("Revivir") == 0 ? 0 : SaveSystem.GetUpgradeBonus("Revivir");
             Debug.Log("Revive: " + revive);
-            
+
         }
 
         if (Instance == null)
@@ -154,6 +155,9 @@ public class movement : MonoBehaviour
     }
 
 
+
+
+
     public void Die()
     {
         if (revive > 0)
@@ -168,6 +172,9 @@ public class movement : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.ShowDeathScreen();
+            GameManager.Instance.ReturnToMenuFromDeath(); // delega
+
             Destroy(gameObject);
         }
     }

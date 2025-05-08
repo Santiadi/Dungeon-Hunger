@@ -81,7 +81,26 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isBoss && collision.gameObject.CompareTag("Player"))
+        {
+            if (movement.Instance != null)
+            {
+                movement.Instance.CharacterDamage(damage);
+                ReciveDamage(-1);
+            }
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (movement.Instance != null)
+            {
+                movement.Instance.CharacterDamage(damage);
+                Destroy(this.gameObject);
+            }
 
+        }
+    }
     public void ReciveDamage(float damage)
     {
         Debug.Log("Recibiendo daño: " + damage);

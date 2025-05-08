@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\HUD_Inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeBlessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UpgradeBlessing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\InventoryManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventorySlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\InventorySlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeCard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UpgradeCard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\ItemBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\ItemBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradesTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\UpgradesTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Coins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\HUD_Coins.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Hearts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,58 +55,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HUD_Inventory.cs",
-              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Inventory.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HUD_Inventory.cs",
-              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Inventory.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HUD_Inventory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Title": "UpgradeBlessing.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeBlessing.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradeBlessing.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeBlessing.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UpgradeBlessing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T18:54:06.399Z",
+              "WhenOpened": "2025-05-07T05:07:21.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "InventoryManager.cs",
-              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\InventoryManager.cs",
-              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\InventoryManager.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Title": "UpgradesTrigger.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradesTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradesTrigger.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradesTrigger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UpgradesTrigger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T18:48:52.111Z",
+              "WhenOpened": "2025-05-07T03:52:19.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InventorySlot.cs",
-              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventorySlot.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\InventorySlot.cs",
-              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventorySlot.cs",
-              "RelativeToolTip": "Assets\\Scripts\\InventorySlot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UpgradeCard.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeCard.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradeCard.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeCard.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UpgradeCard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T05:39:28.495Z",
+              "WhenOpened": "2025-05-07T03:51:18.229Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ItemBase.cs",
-              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\ItemBase.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ItemBase.cs",
-              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\ItemBase.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ItemBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Item.cs",
+              "RelativeDocumentMoniker": "Assets\\Item.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Item.cs",
+              "RelativeToolTip": "Assets\\Item.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T05:38:38.388Z",
+              "WhenOpened": "2025-05-07T01:24:24.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Bomb.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Bomb.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Bomb.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Bomb.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Bomb.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T00:40:33.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InventoryManager.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InventoryManager.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InventoryManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T20:13:18.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "HUD_Coins.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Coins.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HUD_Coins.cs",
@@ -106,24 +140,25 @@
               "RelativeToolTip": "Assets\\Scripts\\HUD_Coins.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T04:02:56.054Z"
+              "WhenOpened": "2025-05-06T04:02:56.054Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "GameManager.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
               "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T03:14:39.474Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "HUD_Hearts.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Hearts.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HUD_Hearts.cs",
@@ -135,13 +170,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "movement.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\movement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\movement.cs",
               "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\movement.cs",
               "RelativeToolTip": "Assets\\Scripts\\movement.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAswKIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T02:35:25.716Z",
               "EditorCaption": ""

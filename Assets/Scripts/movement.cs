@@ -1,39 +1,34 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class movement : MonoBehaviour
 {
     public static movement Instance;
 
-    public GameObject bulletPrefab;
-    public float bulletSpeed;
+    [Header("Movimiento")]
     public float speed = 100;
-    private float lastFire;
-    public float fireDelay;
+
     public float revive = 1f; 
     private Vector2 input;
-
-    public float currentHearts = 3f; // Vida actual del jugador
-    public float maxHearts = 3;        // Vida m�xima posible (de 3 a 5)
-
-    public GameObject swordHitBox;
     public Rigidbody2D rb;
+
+    [Header("Combate")]
+    public float fireDelay;
+    private float lastFire;
+    public GameObject swordHitBox;
+
+    [Header("Vida")]
+    public float currentHearts = 3f;
+    public float maxHearts = 3f;
+
+    [Header("Inventario y HUD")]
+    public InventoryManager inventoryManager;
+    public HUD_Hearts hudHearts;
 
     private Animator anim;
 
-    public InventoryManager inventoryManager;  // Referencia al InventoryManager
-
-
-    // Referencia al HUD
-    public HUD_Hearts hudHearts;
-
-
     void Awake()
     {
-        // Start al Stats
         if (SaveSystem.LoadPlayer() != null)
         {
             currentHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
@@ -44,6 +39,7 @@ public class movement : MonoBehaviour
             Debug.Log("Revive: " + revive);
             
         }
+
         if (Instance == null)
         {
             Instance = this;
@@ -53,11 +49,8 @@ public class movement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        // Asegura que la vida no exceda la m�xima
         currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
 
-        // Inicializa el HUD con la vida inicial
         if (hudHearts != null)
         {
             hudHearts.UpdateHearts(currentHearts, maxHearts);
@@ -77,10 +70,18 @@ public class movement : MonoBehaviour
             anim.SetFloat("AttackX", shootHor);
             anim.SetFloat("AttackY", shootVer);
             anim.SetTrigger("AttackTrigger");
+
             Shoot(shootHor, shootVer);
+
+            // ⚔️ Si el efecto SwordSlash está activo, dispara el slash
+            SwordSlashEffect slashEffect = GetComponent<SwordSlashEffect>();
+            if (slashEffect != null && slashEffect.IsActive())
+            {
+                slashEffect.TryShootSlash(new Vector2(shootHor, shootVer));
+            }
+
             lastFire = Time.time;
         }
-
     }
 
     void FixedUpdate()
@@ -93,7 +94,6 @@ public class movement : MonoBehaviour
     {
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
-
         input.Normalize();
     }
 
@@ -117,6 +117,13 @@ public class movement : MonoBehaviour
 
         swordHitBox.SetActive(true);
         swordHitBox.transform.position = transform.position + (Vector3)shootDirection;
+        StartCoroutine(DisableSwordHitboxAfterDelay());
+    }
+
+    private IEnumerator DisableSwordHitboxAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        swordHitBox.SetActive(false);
     }
 
     public void DisableSwordHitbox()
@@ -136,12 +143,10 @@ public class movement : MonoBehaviour
 
         if (currentHearts <= 0)
         {
-
             anim.SetTrigger("Die");
         }
         else
         {
-
             anim.SetTrigger("Hurt");
         }
     }

@@ -67,9 +67,11 @@
     <Compile Include="Assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\AudioManager.cs" />
     <Compile Include="Assets\Scripts\HUD_Coins.cs" />
+    <Compile Include="Assets\Scripts\ClearEffect.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\SpawnerLogic.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeDetailsUI.cs" />
+    <Compile Include="Assets\Scripts\SlashProjectile.cs" />
     <Compile Include="Assets\Scripts\BlessingsMenuUI.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\hitBoxScript.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Assets\EnemyBossController.cs" />
     <Compile Include="Assets\Scripts\UpgradeCard.cs" />
     <Compile Include="Assets\Scripts\movement.cs" />
+    <Compile Include="Assets\Scripts\SwordSlashEffect.cs" />
     <Compile Include="Assets\Scripts\BlessingManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Scripts_menu\UpgradeData.cs" />

@@ -7,6 +7,8 @@ public class movement : MonoBehaviour
 
     [Header("Movimiento")]
     public float speed = 100;
+
+    public float revive = 1f; 
     private Vector2 input;
     public Rigidbody2D rb;
 
@@ -33,6 +35,9 @@ public class movement : MonoBehaviour
             maxHearts = SaveSystem.GetUpgradeBonus("Salud maxima") == 0 ? 1 : SaveSystem.GetUpgradeBonus("Salud maxima");
             fireDelay = (float)(SaveSystem.GetUpgradeBonus("Velocidad de ataque") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de ataque"));
             speed = (float)(SaveSystem.GetUpgradeBonus("Velocidad de movimiento") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de movimiento"));
+            revive = SaveSystem.GetUpgradeBonus("Revivir") == 0 ? 0 : SaveSystem.GetUpgradeBonus("Revivir");
+            Debug.Log("Revive: " + revive);
+            
         }
 
         if (Instance == null)
@@ -148,7 +153,20 @@ public class movement : MonoBehaviour
 
     public void Die()
     {
-        Destroy(this.gameObject);
+        if (revive > 0)
+        {
+            currentHearts = maxHearts;
+            revive--;
+            if (hudHearts != null)
+            {
+                hudHearts.UpdateHearts(currentHearts, maxHearts);
+            }
+            anim.SetTrigger("Revive");
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void IncreaseMaxHealth(int amount)

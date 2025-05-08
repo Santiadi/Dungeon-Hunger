@@ -4,12 +4,21 @@ using System.Collections;
 public class Bomb : MonoBehaviour
 {
     public float explosionTime = 3f;  
-    public float explosionRadius = 1f;  
-    public float explosionDamage = 10f;  // Daño que causa la bomba
+    public float explosionRadius;  
+    public float explosionDamage = 10f;  // Daï¿½o que causa la bomba
     public string enemyTag = "Enemy";  
     private Animator bombAnimator; 
 
     private CircleCollider2D explosionCollider;
+
+
+    void Awake()
+    {
+        if (SaveSystem.LoadPlayer() != null)
+        {
+            explosionRadius = SaveSystem.GetUpgradeBonus("Aumento de area de explosion de la bomba") == 0 ? 1f : SaveSystem.GetUpgradeBonus("Aumento de area de explosion de la bomba");
+        }
+    }
 
     void Start()
     {
@@ -30,7 +39,7 @@ public class Bomb : MonoBehaviour
     {
         yield return new WaitForSeconds(explosionTime);
         bombAnimator?.SetTrigger("Explode");
-        yield return new WaitForSeconds(0.4f); // Delay final de animación
+        yield return new WaitForSeconds(0.4f); // Delay final de animaciï¿½n
 
         Explode();
     }
@@ -38,7 +47,7 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("¡La bomba ha explotado!");
+        Debug.Log("ï¿½La bomba ha explotado!");
 
         explosionCollider.enabled = true;
 
@@ -58,7 +67,7 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Dibujar el radio de la explosión en la escena para debug
+    // Dibujar el radio de la explosiï¿½n en la escena para debug
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

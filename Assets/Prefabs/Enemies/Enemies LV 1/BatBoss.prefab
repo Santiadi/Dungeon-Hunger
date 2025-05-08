@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
+      propertyPath: maxPotionPrefab
+      value: 
+      objectReference: {fileID: 7848150204166538452, guid: e9953e075aa735745b40a247952f38ca, type: 3}
     - target: {fileID: 7888829622459321924, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.8031

@@ -5,18 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - playerDamage
-
-  - Enemy
-
-  - ProjectileDestroyer
   - Spawner
   - SpawnerAfterWave
-
+  - Enemy
+  - UpgradeTrigger
+  - Items
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 
@@ -48,7 +46,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 2944484747
     locked: 0

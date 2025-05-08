@@ -6444,6 +6444,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 146197490}
     - target: {fileID: 4793043845468932257, guid: 970a8d5b91eaffc4e923b04e4429c64c, type: 3}
+      propertyPath: EventSystem
+      value: 
+      objectReference: {fileID: 785035480}
+    - target: {fileID: 4793043845468932257, guid: 970a8d5b91eaffc4e923b04e4429c64c, type: 3}
       propertyPath: BlessingManager
       value: 
       objectReference: {fileID: 1687330384}

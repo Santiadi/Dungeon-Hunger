@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public GameObject BlessingManager;
     public GameObject InventoryManager;
 
+
     [Header("Pausa")]
     public GameObject pauseBackground;
     public GameObject pauseText;
@@ -54,8 +55,16 @@ public class GameManager : MonoBehaviour
 
 
 
+    public GameObject EventSystem;
+
+
     private void Awake()
     {
+        if(SaveSystem.LoadPlayer() != null)
+        {
+            blessingLevel = (int)(SaveSystem.GetUpgradeBonus("Aumento de ratio de bendiciones") == 0 ? 0 : SaveSystem.GetUpgradeBonus("Aumento de ratio de bendiciones"));
+
+        }
         if (Instance == null)
         {
             FindSpawners();
@@ -65,6 +74,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(Player);
             DontDestroyOnLoad(BlessingManager);
             DontDestroyOnLoad(InventoryManager);
+            DontDestroyOnLoad(EventSystem);
             LoadGame();
         }
         else

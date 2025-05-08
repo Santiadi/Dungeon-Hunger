@@ -10,8 +10,16 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private Vector3 originalScale;
     public float hoverScale = 1.1f;
+    private int numeroDeBombas = 1;
 
     private Blessing currentBlessing;
+
+
+    void Awake()
+    {
+        numeroDeBombas = (int)(SaveSystem.GetUpgradeBonus("Numero de bombas") == 0 ? 1f : SaveSystem.GetUpgradeBonus("Numero de bombas"));
+    }
+
 
     private void Start()
     {
@@ -89,15 +97,15 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 }
                 break;
 
-            case "Small Heal":
+            case "Healing +0.5":
                 playerMovement?.Heal(0.5f);
                 break;
 
-            case "Medium Heal":
+            case "Healing +1":
                 playerMovement?.Heal(1f);
                 break;
 
-            case "Full Heal":
+            case "Max Healing":
                 playerMovement?.Heal(5f);
                 break;
 
@@ -112,6 +120,33 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             case "Coins +10":
                 GameManager.Instance?.AddCoins(10);
                 break;
+
+            case "Extra Life":
+                {
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    movement playerScript = player?.GetComponent<movement>();
+
+                    if (playerScript != null)
+                    {
+                        playerScript.revive += 1f;
+                        Debug.Log("Revive aumentado. Ahora tiene: " + playerScript.revive);
+                    }
+                    break;
+                }
+
+            case "Ghost Heart":
+                {
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    movement playerScript = player?.GetComponent<movement>();
+
+                    if (playerScript != null)
+                    {
+                        playerScript.ghostHearts += 1f;
+                        playerScript.hudHearts?.UpdateHearts(playerScript.currentHearts, playerScript.maxHearts, playerScript.ghostHearts);
+                        Debug.Log("Ghost Heart agregado. Total: " + playerScript.ghostHearts);
+                    }
+                    break;
+                }
 
             default:
                 Debug.LogWarning("No hay lógica definida para esta bendición.");
@@ -131,11 +166,24 @@ public class BlessingCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         if (prefab != null)
         {
-            Vector3 spawnPosition = GameObject.FindGameObjectWithTag("Player").transform.position + Vector3.right * 1.5f;
+            Vector3 basePos = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-            GameObject spawned = Instantiate(prefab, spawnPosition, Quaternion.identity);
-            Debug.Log($"[{itemName}] instanciado en la posición: {spawnPosition}");
+            int cantidad = 1;
+
+            if (itemName == "Bomb")
+            {
+                cantidad = numeroDeBombas;
+            }
+
+            for (int i = 0; i < cantidad; i++)
+            {
+                Vector3 offset = new Vector3(1.5f, i * 0.2f, 0); // 👈 muy poca separación vertical
+                Instantiate(prefab, basePos + offset, Quaternion.identity);
+            }
+
+
         }
+
         else
         {
             Debug.LogError("❌ No se encontró el prefab para: " + itemName);

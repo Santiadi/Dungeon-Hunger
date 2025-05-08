@@ -6,6 +6,8 @@ public class Bomb : MonoBehaviour
     public float explosionTime = 3f;  
     public float explosionRadius;  
     public float explosionDamage = 10f;  // Da�o que causa la bomba
+    public GameObject radiusVisualPrefab;
+    private GameObject radiusVisualInstance;
     public string enemyTag = "Enemy";  
     private Animator bombAnimator; 
 
@@ -32,6 +34,15 @@ public class Bomb : MonoBehaviour
         explosionCollider.enabled = false;
 
         StartCoroutine(ExplosionCountdown());
+
+        if (radiusVisualPrefab != null)
+        {
+            radiusVisualInstance = Instantiate(radiusVisualPrefab, transform.position, Quaternion.identity);
+            radiusVisualInstance.transform.SetParent(transform);
+            radiusVisualInstance.transform.localScale = Vector3.one * explosionRadius * 2f; // Doble radio = diámetro
+            radiusVisualInstance.SetActive(true);
+        }
+
     }
 
 
@@ -47,16 +58,13 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("�La bomba ha explotado!");
+        Debug.Log("¡La bomba ha explotado!");
 
         explosionCollider.enabled = true;
 
-
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-
         foreach (Collider2D enemy in hitEnemies)
         {
-
             if (enemy.CompareTag(enemyTag))
             {
                 Destroy(enemy.gameObject);
@@ -64,8 +72,15 @@ public class Bomb : MonoBehaviour
             }
         }
 
+        if (radiusVisualInstance != null)
+        {
+            radiusVisualInstance.SetActive(false);
+            Destroy(radiusVisualInstance);
+        }
+
         Destroy(gameObject);
     }
+
 
     // Dibujar el radio de la explosi�n en la escena para debug
     private void OnDrawGizmosSelected()

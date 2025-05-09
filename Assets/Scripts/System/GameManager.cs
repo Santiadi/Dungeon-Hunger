@@ -119,7 +119,17 @@ public class GameManager : MonoBehaviour
 
         pauseBackground.SetActive(isPaused);
         pauseText.SetActive(isPaused);
+
+        // ⏸️ Pausar o reanudar música
+        if (musicSource != null)
+        {
+            if (isPaused)
+                musicSource.Pause();
+            else
+                musicSource.UnPause();
+        }
     }
+
 
     public void ShowDeathScreen()
     {
@@ -226,17 +236,17 @@ public class GameManager : MonoBehaviour
     {
         if (musicSource == null) return;
 
-        if (currentWave == 10 && bossWaveMusic != null)
-        {
-            musicSource.clip = bossWaveMusic;
-        }
-        else if (normalWaveMusic != null)
-        {
-            musicSource.clip = normalWaveMusic;
-        }
+        AudioClip targetClip = currentWave == 10 ? bossWaveMusic : normalWaveMusic;
 
-        musicSource.Play();
+        if (musicSource.clip != targetClip)
+        {
+            musicSource.clip = targetClip;
+            musicSource.loop = true;
+            musicSource.Play();
+            Debug.Log("🎵 Reproduciendo: " + targetClip.name);
+        }
     }
+
 
 
 

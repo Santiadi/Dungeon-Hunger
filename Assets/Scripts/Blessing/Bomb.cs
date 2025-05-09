@@ -9,7 +9,12 @@ public class Bomb : MonoBehaviour
     public GameObject radiusVisualPrefab;
     private GameObject radiusVisualInstance;
     public string enemyTag = "Enemy";  
-    private Animator bombAnimator; 
+    private Animator bombAnimator;
+
+    [Header("Audio")]
+    public AudioClip explosionClip;
+    private AudioSource audioSource;
+
 
     private CircleCollider2D explosionCollider;
 
@@ -32,6 +37,9 @@ public class Bomb : MonoBehaviour
         explosionCollider.isTrigger = true;  
 
         explosionCollider.enabled = false;
+
+        audioSource = GetComponent<AudioSource>();
+
 
         StartCoroutine(ExplosionCountdown());
 
@@ -74,13 +82,18 @@ public class Bomb : MonoBehaviour
             }
         }
 
+        if (explosionClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(explosionClip);
+        }
+
         if (radiusVisualInstance != null)
         {
             radiusVisualInstance.SetActive(false);
             Destroy(radiusVisualInstance);
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.6f);
     }
 
 

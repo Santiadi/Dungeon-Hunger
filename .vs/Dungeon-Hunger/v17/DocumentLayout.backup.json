@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\MapLogic\\SpikeDamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MapLogic\\SpikeDamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\System\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\System\\GameManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -59,19 +67,43 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Item.cs",
-              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Item.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Item.cs",
-              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Item.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Item.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Title": "SpikeDamage.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\MapLogic\\SpikeDamage.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MapLogic\\SpikeDamage.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\MapLogic\\SpikeDamage.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MapLogic\\SpikeDamage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T04:52:06.543Z",
+              "WhenOpened": "2025-05-08T06:14:16.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\System\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\System\\GameManager.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\System\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\System\\GameManager.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAuwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T05:39:06.024Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Item.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Item.cs",
+              "ToolTip": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Item.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Item.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T04:52:06.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "SwordSlashEffect.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\SwordSlashEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SwordSlashEffect.cs",
@@ -79,12 +111,11 @@
               "RelativeToolTip": "Assets\\Scripts\\SwordSlashEffect.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T04:24:17.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T04:24:17.282Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "InventoryManager.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\InventoryManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\InventoryManager.cs",
@@ -92,12 +123,11 @@
               "RelativeToolTip": "Assets\\Scripts\\InventoryManager.cs",
               "ViewState": "AgIAAL0AAAAAAAAAAAAswO8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T04:20:33.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T04:20:33.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "HUD_Hearts.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\HUD_Hearts.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HUD_Hearts.cs",
@@ -105,12 +135,11 @@
               "RelativeToolTip": "Assets\\Scripts\\HUD_Hearts.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T03:27:54.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T03:27:54.167Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "movement.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\movement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\movement.cs",
@@ -118,12 +147,11 @@
               "RelativeToolTip": "Assets\\Scripts\\movement.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAcwCEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T03:03:10.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T03:03:10.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Blessing.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Blessing.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Blessing.cs",
@@ -131,12 +159,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Blessing.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T19:30:29.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T19:30:29.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "BlessingCard.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\BlessingCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BlessingCard.cs",
@@ -144,12 +171,11 @@
               "RelativeToolTip": "Assets\\Scripts\\BlessingCard.cs",
               "ViewState": "AgIAAGwAAAAAAAAAAAAswJEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T19:22:01.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T19:22:01.48Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "BlessingManager.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\BlessingManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\BlessingManager.cs",
@@ -157,12 +183,11 @@
               "RelativeToolTip": "Assets\\Scripts\\BlessingManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T19:17:04.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T19:17:04.772Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "UpgradesTrigger.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradesTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradesTrigger.cs",
@@ -170,12 +195,11 @@
               "RelativeToolTip": "Assets\\Scripts\\UpgradesTrigger.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T03:52:19.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T03:52:19.267Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "UpgradeCard.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\UpgradeCard.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradeCard.cs",
@@ -187,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Bomb.cs",
               "DocumentMoniker": "D:\\Programacion\\Repositories\\Dungeon-Hunger\\Assets\\Scripts\\Bomb.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bomb.cs",
@@ -195,8 +219,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Bomb.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAswFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T00:40:33.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T00:40:33.099Z"
             }
           ]
         }

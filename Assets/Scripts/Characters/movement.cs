@@ -41,7 +41,6 @@ public class movement : MonoBehaviour
             fireDelay = (float)(SaveSystem.GetUpgradeBonus("Velocidad de ataque") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de ataque"));
             speed = (float)(SaveSystem.GetUpgradeBonus("Velocidad de movimiento") == 0 ? 1.5 : SaveSystem.GetUpgradeBonus("Velocidad de movimiento"));
             revive = SaveSystem.GetUpgradeBonus("Revivir") == 0 ? 0 : SaveSystem.GetUpgradeBonus("Revivir");
-            Debug.Log("Revive: " + revive);
 
         }
 
@@ -131,6 +130,7 @@ public class movement : MonoBehaviour
 
     public void CharacterDamage(float damage)
     {
+        Debug.Log("Recibiendo daño del enemigo: " + damage);
         if (ghostHearts > 0)
         {
             ghostHearts -= damage;

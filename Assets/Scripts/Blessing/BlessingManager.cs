@@ -26,9 +26,7 @@ public class BlessingManager : MonoBehaviour
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Aquí puedes manejar la lógica que necesites al cargar una escena
-        // Por ejemplo, puedes reiniciar el inventario o cargar datos específicos de la escena
-        Debug.Log("Escena cargada: " + scene.name);
+
     }
     public List<Blessing> GetRandomBlessings(int count)
     {

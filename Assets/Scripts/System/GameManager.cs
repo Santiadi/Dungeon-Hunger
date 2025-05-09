@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
+        Time.timeScale = 0f;
         StartCoroutine(SpawnWave());
     }
 
@@ -311,7 +311,7 @@ public class GameManager : MonoBehaviour
             if (currentWave == 10)
             {
                 currentWave++;
-                if(GameObject.FindGameObjectWithTag("PortalSpawner") != null){return;}
+                if(GameObject.FindGameObjectWithTag("PortalSpawner") == null){return;}
                 ActivePortal();
             }
             else
@@ -324,6 +324,7 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceWave()
     {
+        currentLevel ++;
         if (currentWave <= 9)
         {
             StartCoroutine(SpawnWave());

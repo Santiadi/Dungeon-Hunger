@@ -13,7 +13,6 @@ public class BlessData
         name = new List<string>();  // Inicializar las listas
         level = new List<int>();
         bonusPerLevel = new List<float>();
-        UnityEngine.Debug.Log("BlessData creado con listas vacías");
     }
 
     // Constructor para inicializar con valores
@@ -22,13 +21,11 @@ public class BlessData
         this.name = name;
         this.level = level;
         this.bonusPerLevel = bonusPerLevel;
-        UnityEngine.Debug.Log("BlessData creado con datos: " + string.Join(",", level));
     }
 
     // Método para agregar nuevos datos
     public void AddBlessing(string blessingName, int blessingLevel, float bonusValue)
     {
-        UnityEngine.Debug.Log($"AddBlessing: {blessingName}, nivel={blessingLevel}, bonus={bonusValue}");
         if(name.Contains(blessingName))
         {
             int index = name.IndexOf(blessingName);

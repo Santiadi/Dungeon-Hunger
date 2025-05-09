@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\HUD\HUD_Coins.cs" />
     <Compile Include="Assets\Scripts\Characters\movement.cs" />
     <Compile Include="Assets\Scripts\Blessing\ClearEffect.cs" />
+    <Compile Include="Assets\ChangeSceneOnTimer.cs" />
     <Compile Include="Assets\Scripts\MapLogic\BulletController.cs" />
     <Compile Include="Assets\Scripts\MapLogic\machineLogic.cs" />
     <Compile Include="Assets\Scripts\HUD\HUD_Hearts.cs" />

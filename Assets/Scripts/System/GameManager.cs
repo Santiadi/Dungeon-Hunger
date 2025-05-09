@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0f;
         StartCoroutine(SpawnWave());
     }
 
@@ -334,7 +333,6 @@ public class GameManager : MonoBehaviour
 
     public void AdvanceWave()
     {
-        currentLevel ++;
         if (currentWave <= 9)
         {
             StartCoroutine(SpawnWave());

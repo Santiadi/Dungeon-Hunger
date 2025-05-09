@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: damage
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: hearts
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5747259522011500487, guid: b4598e35f617a674bb169837f2b05e30, type: 3}
       propertyPath: isBoss

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.256502, y: -6.2477455, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,9 +125,9 @@ MonoBehaviour:
   dropPrefab: {fileID: 592793126759062293, guid: ab8eda7baf8987943b1b62a739aeabf2, type: 3}
   isBoss: 1
   velocity: 3
-  damage: 2
+  damage: 1.5
   maxPotionPrefab: {fileID: 4825451219767421000, guid: 0f7a57f7b5a90b74f894070274096669, type: 3}
-  hearts: 100
+  hearts: 120
 --- !u!61 &7525097002127560922
 BoxCollider2D:
   m_ObjectHideFlags: 0

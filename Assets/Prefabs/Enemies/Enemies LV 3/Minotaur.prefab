@@ -127,7 +127,7 @@ MonoBehaviour:
   velocity: 3
   damage: 1.5
   maxPotionPrefab: {fileID: 0}
-  hearts: 1
+  hearts: 0
 --- !u!61 &-573722980749629408
 BoxCollider2D:
   m_ObjectHideFlags: 0

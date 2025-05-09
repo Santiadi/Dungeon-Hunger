@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject BlessingManager;
     public GameObject InventoryManager;
+    public GameObject MusicPlayer;
 
     public GameObject EventSystem;
 
@@ -55,6 +56,12 @@ public class GameManager : MonoBehaviour
     public GameObject pauseBackground;
     public GameObject pauseText;
     private bool isPaused = false;
+
+    [Header("Audio")]
+    public AudioSource musicSource;
+    private AudioClip normalWaveMusic;
+    private AudioClip bossWaveMusic;
+
 
     [Header("Muerte")]
     public GameObject deathBackground;
@@ -80,6 +87,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(BlessingManager);
             DontDestroyOnLoad(InventoryManager);
             DontDestroyOnLoad(EventSystem);
+            DontDestroyOnLoad(MusicPlayer);
             LoadGame();
         }
         else
@@ -181,7 +189,7 @@ public class GameManager : MonoBehaviour
         {
             waveText.text = "1";
         }
-
+        LoadMapMusic();
         FindSpawners(); // Llamado al cargar una nueva escena
     }
 
@@ -196,6 +204,41 @@ public class GameManager : MonoBehaviour
         portalSpawn = GameObject.FindGameObjectWithTag("PortalSpawner");
 
     }
+
+    void LoadMapMusic()
+    {
+        MapMusicConfig config = FindObjectOfType<MapMusicConfig>();
+
+        if (config != null)
+        {
+            normalWaveMusic = config.normalWaveMusic;
+            bossWaveMusic = config.bossWaveMusic;
+            PlayWaveMusic(); // Iniciar la música desde el principio
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró un MapMusicConfig en la escena.");
+        }
+    }
+
+
+    void PlayWaveMusic()
+    {
+        if (musicSource == null) return;
+
+        if (currentWave == 10 && bossWaveMusic != null)
+        {
+            musicSource.clip = bossWaveMusic;
+        }
+        else if (normalWaveMusic != null)
+        {
+            musicSource.clip = normalWaveMusic;
+        }
+
+        musicSource.Play();
+    }
+
+
 
     // OLEADAS
     IEnumerator SpawnWave()
@@ -297,7 +340,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(SpawnWave());
         }
         waveText.text = currentWave.ToString();
-
+        PlayWaveMusic();
 
     }
     void ShowPostWaveOptions()
@@ -343,6 +386,7 @@ public class GameManager : MonoBehaviour
         Destroy(BlessingManager);
         Destroy(InventoryManager);
         Destroy(Player); // por si aún sigue activo
+        Destroy(MusicPlayer);
         deathBackground.SetActive(true);
         deathText.SetActive(true);
 

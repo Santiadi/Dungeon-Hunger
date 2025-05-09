@@ -25,6 +25,19 @@ public class movement : MonoBehaviour
     [Header("Ghost Hearts")]
     public float ghostHearts = 0f;
 
+    [Header("Audio")]
+    public AudioClip attackClip;
+    public AudioClip reviveClip;
+    public AudioClip hurtClip;
+    public AudioClip healClip;
+
+    [Header("Efectos visuales")]
+    public GameObject healParticlesPrefab;
+
+
+    private AudioSource audioSource;
+
+
 
     [Header("Inventario y HUD")]
     public InventoryManager inventoryManager;
@@ -54,6 +67,7 @@ public class movement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         currentHearts = Mathf.Clamp(currentHearts, 0, maxHearts);
 
         if (hudHearts != null)
@@ -117,6 +131,13 @@ public class movement : MonoBehaviour
             shootDirection.Normalize();
         }
 
+        SwordSlashEffect slashEffect = GetComponent<SwordSlashEffect>();
+
+        if ((slashEffect == null || !slashEffect.IsActive()) && attackClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(attackClip);
+        }
+
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
@@ -151,7 +172,14 @@ public class movement : MonoBehaviour
         else
         {
             anim.SetTrigger("Hurt");
+
+            if (hurtClip != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(hurtClip);
+            }
+
         }
+
     }
 
 
@@ -169,6 +197,11 @@ public class movement : MonoBehaviour
                 hudHearts.UpdateHearts(currentHearts, maxHearts);
             }
             anim.SetTrigger("Revive");
+
+            if (reviveClip != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(reviveClip);
+            }
         }
         else
         {
@@ -199,5 +232,17 @@ public class movement : MonoBehaviour
         {
             hudHearts.UpdateHearts(currentHearts, maxHearts);
         }
+
+        if (healClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(healClip);
+        }
+
+        if (healParticlesPrefab != null)
+        {
+            Instantiate(healParticlesPrefab, transform.position, Quaternion.identity);
+        }
     }
+
+
 }

@@ -12,6 +12,11 @@ public class SwordSlashEffect : MonoBehaviour
     [Header("Estado actual (debug)")]
     public int slashesRemaining;
 
+    [Header("Audio")]
+    public AudioClip swordSlashClip;
+    private AudioSource audioSource;
+
+
     private movement playerMovement;
 
 
@@ -31,6 +36,8 @@ public class SwordSlashEffect : MonoBehaviour
     {
         playerMovement = GetComponent<movement>();
         slashesRemaining = 0; // Asegurarse que comience desactivado
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     public void Activate(int uses, float height)
@@ -45,6 +52,11 @@ public class SwordSlashEffect : MonoBehaviour
         if (slashesRemaining <= 0) return;
 
         slashesRemaining--;
+
+        if (swordSlashClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(swordSlashClip);
+        }
 
         Vector3 spawnPos = transform.position + (Vector3)shootDir.normalized;
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg);

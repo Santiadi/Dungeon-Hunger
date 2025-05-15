@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CakeTrigger : MonoBehaviour
@@ -10,10 +11,7 @@ public class CakeTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Pausar el juego
-            Time.timeScale = 0f;
 
-            // Buscar el grupo visual
             Transform finalTextGroup = GameObject.Find("FinalText")?.transform;
             if (finalTextGroup == null)
             {
@@ -23,6 +21,8 @@ public class CakeTrigger : MonoBehaviour
 
             Image fadeImage = finalTextGroup.Find("FadePanel")?.GetComponent<Image>();
             Text congratsText = finalTextGroup.Find("CongratulationsText")?.GetComponent<Text>();
+            Text subText = finalTextGroup.Find("SubText")?.GetComponent<Text>();
+            Image cake = finalTextGroup.Find("Cake")?.GetComponent<Image>();
 
             if (fadeImage == null || congratsText == null)
             {
@@ -30,19 +30,14 @@ public class CakeTrigger : MonoBehaviour
                 return;
             }
 
-            // Activar panel y texto manualmente porque las coroutines se congelan con Time.timeScale = 0
-            fadeImage.color = new Color(0, 0, 0, 1); // Aparece inmediatamente
-            congratsText.gameObject.SetActive(true);
+            // Iniciar la animación pero NO destruir todavía
+            StartCoroutine(FadeAndShowText(fadeImage, congratsText, subText, cake));
 
-            // Destruir el pastel
-            Destroy(gameObject);
         }
     }
 
 
-
-
-    private IEnumerator FadeAndShowText(Image fadePanel, Text congratulationsText)
+    private IEnumerator FadeAndShowText(Image fadePanel, Text congratulationsText, Text SubText, Image cake)
     {
         Color startColor = new Color(0, 0, 0, 0);
         Color endColor = new Color(0, 0, 0, 1);
@@ -59,9 +54,13 @@ public class CakeTrigger : MonoBehaviour
 
         fadePanel.color = endColor;
         congratulationsText.gameObject.SetActive(true);
+        SubText.gameObject.SetActive(true);
+        cake.gameObject.SetActive(true);
 
         // Espera unos segundos y luego destruye el pastel
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("IntroScene");
         Destroy(gameObject);
     }
 

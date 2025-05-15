@@ -6,17 +6,18 @@ public class nextWave : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.Instance != null)
+        GameObject[] items = GameObject.FindGameObjectsWithTag("Items");
+        if (collision.gameObject.CompareTag("Player") && GameManager.Instance != null)
         {
             GameManager.Instance.AdvanceWave();
+            Destroy(this.gameObject);
+            if (GameObject.FindGameObjectWithTag("UpgradeTrigger"))
+            {
+                Destroy(GameObject.FindGameObjectWithTag("UpgradeTrigger"));
+            }
         }
-
-        // Eliminar todos los objetos con el tag "Item"
-        GameObject[] items = GameObject.FindGameObjectsWithTag("Items");
-        if( GameObject.FindGameObjectWithTag("UpgradeTrigger")){
-            Destroy(GameObject.FindGameObjectWithTag("UpgradeTrigger"));
-        }
-        if (items == null){ 
+        if (items == null)
+        {
             Destroy(this.gameObject);
             return;
         }
@@ -25,6 +26,6 @@ public class nextWave : MonoBehaviour
             Destroy(item);
         }
 
-        Destroy(this.gameObject); // Destruye el trigger
+
     }
 }

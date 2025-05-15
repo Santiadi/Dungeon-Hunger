@@ -18,7 +18,7 @@ MonoBehaviour:
   frame: {fileID: -387736045, guid: 76cd9b566debf0141872ec9fd381eea4, type: 3}
   maxLevel: 2
   currentLevel: 0
-  costPerLevel: 0a0000000f000000
+  costPerLevel: 0a00000014000000
   bonusPerLevel:
   - 5
   - 7

@@ -3215,7 +3215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTime: 5.5
-  sceneName: Map 1
+  sceneName: MenuScene
 --- !u!4 &1137028242
 Transform:
   m_ObjectHideFlags: 0
